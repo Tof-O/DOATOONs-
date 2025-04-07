@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Visual Effects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000000; /* Black background */
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid white; /* White line divider */
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer; /* Clickable */
+        }
+
+        .cancel-icon {
+            position: absolute;
+            right: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a0d995;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            border: 2px solid white; /* White square border */
+            transition: box-shadow 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #a0d995;
+            box-shadow: 0 0 10px white; /* Glow effect on hover */
+        }
+
+        .page-content {
+            padding: 150px 2rem 2rem; /* Adjusted to prevent overlap */
+            min-height: calc(100vh - 200px);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scrolling-gallery {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-track {
+            display: flex;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .gallery-track img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #a0d995;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 0 10px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        /* Full-screen overlay */
+        .image-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 3px solid #a0d995;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #a0d995;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-icon:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logos/Official.png" alt="DOATOONS Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+        </div>
+        <div class="header-bottom">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-bar" placeholder="Search...">
+                <span class="cancel-icon" style="display: none;">✖</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="animations.html">Animations</a></li>
+                    <li><a href="designs.html">Designs</a></li>
+                    <li><a href="visual-effects.html">Visual Effects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="contact-us.html" class="contact-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <h1>Visual Effects</h1>
+        <div class="scrolling-gallery">
+            <div class="gallery-track">
+                <img src="Images/Goku.png" alt="Goku" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku';">
+                <img src="Images/Goku ssj2.png" alt="Goku SSJ2" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku+SSJ2';">
+                <img src="Images/Super Sonic.png" alt="Super Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Super+Sonic';">
+                <img src="Images/Super evil sonic.png" alt="Super Evil Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Super+Evil+Sonic';">
+                <img src="Images/SSJ god.png" alt="SSJ god" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=SSJ+god';">
+                <img src="Images/Sonic.png" alt="Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Sonic';">
+                <img src="Logos/DOATOONs Epic.png" alt="Epic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=DOATOONs+Epic';">
+            </div>
+        </div>
+        <!-- Full-screen image overlay -->
+        <div class="image-overlay" id="imageOverlay">
+            <img id="overlayImage" src="" alt="Full-screen image">
+            <span class="close-icon" id="closeOverlay">✖</span>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Logo';">
+        </div>
+        <p>DOATOONs</p>
+        <p class="slogan">"...anything, but animated..."</p>
+        <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
+    </footer>
+
+    <script>
+        // Infinite scroll logic
+        const galleryTrack = document.querySelector('.gallery-track');
+        const images = Array.from(galleryTrack.querySelectorAll('img'));
+        const imageWidth = 220; // Image width (200px) + margin (10px + 10px)
+        const scrollSpeed = 1; // Pixels per frame, adjust for speed
+        let position = 0;
+
+        // Set initial width (not strictly necessary but good for clarity)
+        galleryTrack.style.width = `${images.length * imageWidth}px`;
+
+        function updateScroll() {
+            position -= scrollSpeed; // Move left
+            galleryTrack.style.transform = `translateX(${position}px)`;
+
+            // Check if the first image has scrolled off-screen
+            if (Math.abs(position) >= imageWidth) {
+                position += imageWidth; // Adjust position
+                const firstImage = galleryTrack.firstElementChild;
+                galleryTrack.appendChild(firstImage); // Move first image to end
+                galleryTrack.style.transform = `translateX(${position}px)`; // Reset transform to avoid jump
+            }
+
+            requestAnimationFrame(updateScroll); // Keep looping
+        }
+
+        // Start the scroll
+        requestAnimationFrame(updateScroll);
+
+        // Image click to open overlay
+        const overlay = document.getElementById('imageOverlay');
+        const overlayImage = document.getElementById('overlayImage');
+        const closeOverlay = document.getElementById('closeOverlay');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                overlayImage.src = img.src;
+                overlay.style.display = 'flex';
+            });
+        });
+
+        closeOverlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+
+        // Search bar functionality
+        const searchBar = document.querySelector('.search-bar');
+        const searchIcon = document.querySelector('.search-icon');
+        const cancelIcon = document.querySelector('.cancel-icon');
+
+        // Search on icon click
+        searchIcon.addEventListener('click', () => {
+            const query = searchBar.value.trim();
+            if (query) {
+                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        // Search on Enter key
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchBar.value.trim();
+                if (query) {
+                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        // Show/hide cancel icon and clear text
+        searchBar.addEventListener('input', () => {
+            cancelIcon.style.display = searchBar.value ? 'block' : 'none';
+        });
+
+        cancelIcon.addEventListener('click', () => {
+            searchBar.value = '';
+            cancelIcon.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

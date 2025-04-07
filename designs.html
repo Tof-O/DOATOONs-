@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Designs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000000; /* Black background */
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid white; /* White line divider */
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer; /* Clickable */
+        }
+
+        .cancel-icon {
+            position: absolute;
+            right: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a0d995;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            border: 2px solid white; /* White square border */
+            transition: box-shadow 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #a0d995;
+            box-shadow: 0 0 10px white; /* Glow effect on hover */
+        }
+
+        .page-content {
+            padding: 150px 2rem 2rem; /* Adjusted to prevent overlap */
+            min-height: calc(100vh - 200px);
+        }
+
+        .designs-content {
+            text-align: center;
+        }
+
+        .designs-content .banner img {
+            width: 50%;
+            max-width: 900px;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .designs-content p {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+        }
+
+        .designs-content h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: white;
+        }
+
+        .designs-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .designs-gallery-item {
+            text-align: center;
+        }
+
+        .designs-gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #a0d995;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .designs-gallery-item a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-top: 0.5rem;
+            transition: color 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .designs-gallery-item a:hover {
+            color: #a0d995;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logos/Official.png" alt="DOATOONS Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+        </div>
+        <div class="header-bottom">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-bar" placeholder="Search...">
+                <span class="cancel-icon" style="display: none;">✖</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="animations.html">Animations</a></li>
+                    <li><a href="designs.html">Designs</a></li>
+                    <li><a href="visual-effects.html">Visual Effects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="contact-us.html" class="contact-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <div class="designs-content">
+            <div class="banner">
+                <img src="Logos/Doat.png" alt="DOATOONS Banner" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x100?text=Banner';">
+            </div>
+            <h1>Designs</h1>
+            <p>Welcome to our designs! Our unique and innovative collection features modern and classic styles tailored to your imaginations.</p>
+            <p>Browse and find your perfect fit.</p>
+            <h2>Take a Look</h2>
+            <div class="designs-gallery">
+                <div class="designs-gallery-item">
+                    <img src="Images/Eye.png" alt="Digital Renderings" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Digital+Renderings';">
+                    <a href="digital-renderings.html">Digital Renderings</a>
+                </div>
+                <div class="designs-gallery-item">
+                    <img src="Images/Jace Norman.png" alt="Custom Typeface Creations" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Custom+Typeface+Creations';">
+                    <a href="custom-typeface-creations.html">Custom Typeface Creations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+        </div>
+        <p>DOATOONs</p>
+        <p class="slogan">"...anything, but animated..."</p>
+        <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
+    </footer>
+
+    <script>
+        const searchBar = document.querySelector('.search-bar');
+        const searchIcon = document.querySelector('.search-icon');
+        const cancelIcon = document.querySelector('.cancel-icon');
+
+        // Search on icon click
+        searchIcon.addEventListener('click', () => {
+            const query = searchBar.value.trim();
+            if (query) {
+                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        // Search on Enter key
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchBar.value.trim();
+                if (query) {
+                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        // Show/hide cancel icon and clear text
+        searchBar.addEventListener('input', () => {
+            cancelIcon.style.display = searchBar.value ? 'block' : 'none';
+        });
+
+        cancelIcon.addEventListener('click', () => {
+            searchBar.value = '';
+            cancelIcon.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

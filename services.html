@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000000; /* Black background */
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid white; /* White line divider */
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer; /* Clickable */
+        }
+
+        .cancel-icon {
+            position: absolute;
+            right: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a0d995;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            border: 2px solid white; /* White square border */
+            transition: box-shadow 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #a0d995;
+            box-shadow: 0 0 10px white; /* Glow effect on hover */
+        }
+
+        .page-content {
+            padding: 150px 2rem 2rem; /* Adjusted to prevent overlap */
+            min-height: calc(100vh - 200px);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-button {
+            display: block;
+            width: 200px;
+            margin: 0 auto 3rem;
+            padding: 0.8rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            color: #1a2a1f;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.05);
+        }
+
+        .service-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .service-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #a0d995;
+            margin: 0 2rem;
+        }
+
+        .service-text {
+            flex: 1;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2rem;
+        }
+
+        .service-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: Arial, sans-serif;
+            color: #a0d995;
+        }
+
+        .service-text h3 a {
+            color: #a0d995;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .service-text h3 a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logos/Official.png" alt="DOATOONS Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+        </div>
+        <div class="header-bottom">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-bar" placeholder="Search...">
+                <span class="cancel-icon" style="display: none;">✖</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="animations.html">Animations</a></li>
+                    <li><a href="designs.html">Designs</a></li>
+                    <li><a href="visual-effects.html">Visual Effects</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="contact-us.html" class="contact-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-content">
+        <h1>Services</h1>
+        <p class="intro-text">At DOATOONs, we offer a wide range of animation services to bring your ideas to life. From 2D and 3D animations to visual effects and custom designs, we’ve got you covered. Let’s create something amazing together!</p>
+        <a href="contact-us.html" class="contact-button">Contact Us</a>
+
+        <!-- 2D Animations -->
+        <div class="service-section">
+            <img src="Images/Animation 2d.jpg" alt="2D Animation" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=2D+Animation';">
+            <div class="service-text">
+                <h3><a href="animations.html#2d-animations">2D Animations</a></h3>
+                <p>Our 2D animation services include hand-drawn, sprite sheet, and stickman animations, perfect for storytelling and engaging visuals.</p>
+                <p>Let us bring your characters to life with fluid and expressive movements.</p>
+            </div>
+        </div>
+
+        <!-- 3D Animations -->
+        <div class="service-section reverse">
+            <img src="Images/Sonic.png" alt="3D Animation" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=3D+Animation';">
+            <div class="service-text">
+                <h3><a href="animations.html#3d-animations">3D Animations</a></h3>
+                <p>Our 3D animation services are coming soon! Stay tuned for high-quality, realistic animations that add depth to your projects.</p>
+                <p>We’ll help you create stunning visuals that captivate your audience.</p>
+            </div>
+        </div>
+
+        <!-- Visual Effects -->
+        <div class="service-section">
+            <img src="Images/Jace Norman.png" alt="Visual Effects" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Visual+Effects';">
+            <div class="service-text">
+                <h3><a href="visual-effects.html">Visual Effects</a></h3>
+                <p>Enhance your projects with our visual effects services, including motion graphics, particle effects, and more.</p>
+                <p>We’ll add that extra flair to make your animations stand out.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+        </div>
+        <p>DOATOONs</p>
+        <p class="slogan">"...anything, but animated..."</p>
+        <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
+    </footer>
+
+    <script>
+        const searchBar = document.querySelector('.search-bar');
+        const searchIcon = document.querySelector('.search-icon');
+        const cancelIcon = document.querySelector('.cancel-icon');
+
+        // Search on icon click
+        searchIcon.addEventListener('click', () => {
+            const query = searchBar.value.trim();
+            if (query) {
+                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            }
+        });
+
+        // Search on Enter key
+        searchBar.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchBar.value.trim();
+                if (query) {
+                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        // Show/hide cancel icon and clear text
+        searchBar.addEventListener('input', () => {
+            cancelIcon.style.display = searchBar.value ? 'block' : 'none';
+        });
+
+        cancelIcon.addEventListener('click', () => {
+            searchBar.value = '';
+            cancelIcon.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
