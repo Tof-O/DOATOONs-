@@ -1,7 +1,7 @@
 const pages = [
     {
         title: 'Home',
-        url: 'home.html',
+        url: 'index.html',
         keywords: ['home', 'welcome', 'doatoons'],
         text: 'Welcome to our animation website! Explore a world of imagination and storytelling through our collection of animated content.',
         image: 'Logos/Doatoons.png'
