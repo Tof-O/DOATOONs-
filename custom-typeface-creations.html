@@ -19,8 +19,8 @@
         }
 
         header {
-            background: #000000; /* Black background */
-            padding: 1rem 2rem; /* Keeping padding as requested */
+            background: #000000;
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,7 +40,7 @@
             align-items: center;
             width: 100%;
             padding-top: 1rem;
-            border-top: 1px solid white; /* White line divider */
+            border-top: 1px solid white;
         }
 
         .search-container {
@@ -50,7 +50,7 @@
         }
 
         .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            padding: 0.5rem 0.5rem 0.5rem 2rem;
             border: none;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
@@ -63,7 +63,7 @@
             left: 10px;
             color: #a0d995;
             font-size: 1.2rem;
-            cursor: pointer; /* Clickable */
+            cursor: pointer;
         }
 
         .cancel-icon {
@@ -94,18 +94,18 @@
         }
 
         .contact-link {
-            padding: 1rem 2rem; /* Updated padding as requested */
-            border: 2px solid white; /* White square border */
+            padding: 1rem 2rem;
+            border: 2px solid white;
             transition: box-shadow 0.3s;
         }
 
         .contact-link:hover {
             color: #a0d995;
-            box-shadow: 0 0 10px white; /* Glow effect on hover */
+            box-shadow: 0 0 10px white;
         }
 
         .page-content {
-            padding: 150px 2rem 2rem; /* Adjusted to prevent overlap */
+            padding: 150px 2rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
@@ -123,27 +123,25 @@
 
         .typeface-header .title-container {
             text-align: left;
-            margin-left: 10%; /* Slightly to the left, not fully centered */
+            margin-left: 10%;
         }
 
         .typeface-header h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
-            color: #cccccc; /* Light gray for "BROWSE" */
-            display: block; /* Ensure "BROWSE" is above */
+            color: #cccccc;
+            display: block;
         }
 
         .typeface-header h1 span {
-            color: white; /* "Custom Typeface Creations" in white */
-            font-size: 2.5rem; /* Slightly smaller than "BROWSE" */
-            margin-right: 0%;
-            margin-left: 0%;
+            color: white;
+            font-size: 2.5rem;
         }
 
         .typeface-header .learn-more {
             color: #a0d995;
             text-decoration: underline;
-            font-size: 2rem;
+            font-size: 1.2rem;
             transition: color 0.3s;
         }
 
@@ -163,8 +161,8 @@
         }
 
         .typeface-details img {
-            width: 400px; /* Same size as gallery images */
-            height: 350px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border: 2px solid #a0d995;
             border-radius: 10px;
@@ -193,8 +191,8 @@
 
         .get-yours-btn {
             display: block;
-            margin: 10rem;
-            padding: 0.5rem 1.5rem; /* Shortened padding */
+            margin: 0 auto;
+            padding: 0.5rem 1.5rem;
             background: transparent;
             border: 2px solid white;
             color: white;
@@ -225,6 +223,145 @@
             font-style: italic;
             margin: 0.5rem 0;
         }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            /* Adjust header for mobile */
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 50px; /* Smaller logo on mobile */
+            }
+
+            .header-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 100%; /* Full width search bar on mobile */
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .contact-link {
+                padding: 0.5rem 1rem; /* Smaller padding for mobile */
+            }
+
+            /* Adjust page content padding */
+            .page-content {
+                padding: 100px 1rem 1rem; /* Reduced padding for mobile */
+            }
+
+            /* Adjust typeface header */
+            .typeface-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .typeface-header .title-container {
+                margin-left: 0;
+            }
+
+            .typeface-header h1 {
+                font-size: 2rem; /* Smaller font size on mobile */
+            }
+
+            .typeface-header h1 span {
+                font-size: 1.5rem;
+            }
+
+            .typeface-header .learn-more {
+                font-size: 1rem;
+            }
+
+            /* Stack typeface details vertically */
+            .typeface-details {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .typeface-details.reverse {
+                flex-direction: column; /* Ensure reverse also stacks vertically */
+            }
+
+            .typeface-details img {
+                width: 100%;
+                max-width: 300px; /* Ensure image doesn't overflow */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .typeface-details h2 {
+                font-size: 1.5rem;
+            }
+
+            .typeface-details h3 {
+                font-size: 1rem;
+            }
+
+            .typeface-details p {
+                font-size: 0.9rem;
+            }
+
+            /* Adjust button */
+            .get-yours-btn {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+
+            /* Adjust footer */
+            footer {
+                padding: 1rem;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+        }
+
+        /* Extra small screens (e.g., very small phones) */
+        @media (max-width: 480px) {
+            .typeface-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .typeface-header h1 span {
+                font-size: 1.2rem;
+            }
+
+            .typeface-details h2 {
+                font-size: 1.2rem;
+            }
+
+            .typeface-details h3 {
+                font-size: 0.9rem;
+            }
+
+            .typeface-details p {
+                font-size: 0.8rem;
+            }
+
+            .get-yours-btn {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -240,7 +377,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="home.html">Home</a></li>
                     <li><a href="animations.html">Animations</a></li>
                     <li><a href="designs.html">Designs</a></li>
                     <li><a href="visual-effects.html">Visual Effects</a></li>
