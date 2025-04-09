@@ -106,7 +106,7 @@
 
         /* Hamburger Menu Icon */
         .hamburger {
-            display: none; /* Hidden by default (visible on mobile) */
+            display: none;
             font-size: 2rem;
             color: white;
             cursor: pointer;
@@ -118,7 +118,7 @@
         }
 
         .page-content {
-            padding: 150px 2rem 2rem;
+            padding: 0 2rem 2rem; /* Removed padding-top; it will be set dynamically by JavaScript */
             min-height: calc(100vh - 200px);
         }
 
@@ -249,31 +249,29 @@
             }
 
             .header-bottom {
-                flex-direction: row; /* Keep search and hamburger side by side */
+                flex-direction: row;
                 gap: 1rem;
             }
 
             .search-container {
-                flex: 1; /* Allow search bar to take available space */
+                flex: 1;
             }
 
             .search-bar {
                 width: 100%;
             }
 
-            /* Hide navigation links on mobile */
             nav {
                 display: none;
             }
 
-            /* Show hamburger menu on mobile */
             .hamburger {
                 display: block;
             }
 
-            /* Adjust page content padding */
+            /* Adjust page content */
             .page-content {
-                padding: 100px 1rem 1rem;
+                padding: 0 1rem 1rem; /* Removed padding-top; it will be set dynamically by JavaScript */
             }
 
             /* Adjust typeface header */
@@ -570,6 +568,21 @@
         cancelIcon.addEventListener('click', () => {
             searchBar.value = '';
             cancelIcon.style.display = 'none';
+        });
+
+        // Add script to dynamically adjust content margin based on header height
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content'); // Adjusted selector for this page
+            const headerHeight = header.offsetHeight;
+            pageContent.style.marginTop = `${headerHeight}px`;
+        });
+
+        window.addEventListener('resize', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content'); // Adjusted selector for this page
+            const headerHeight = header.offsetHeight;
+            pageContent.style.marginTop = `${headerHeight}px`;
         });
     </script>
 </body>
