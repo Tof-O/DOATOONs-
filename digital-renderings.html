@@ -19,7 +19,7 @@
         }
 
         header {
-            background: #000000; /* Black background */
+            background: #000000;
             padding: 1rem 2rem;
             position: fixed;
             width: 100%;
@@ -40,7 +40,7 @@
             align-items: center;
             width: 100%;
             padding-top: 1rem;
-            border-top: 1px solid white; /* White line divider */
+            border-top: 1px solid white;
         }
 
         .search-container {
@@ -50,7 +50,7 @@
         }
 
         .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            padding: 0.5rem 0.5rem 0.5rem 2rem;
             border: none;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
@@ -63,7 +63,7 @@
             left: 10px;
             color: #a0d995;
             font-size: 1.2rem;
-            cursor: pointer; /* Clickable */
+            cursor: pointer;
         }
 
         .cancel-icon {
@@ -95,17 +95,30 @@
 
         .contact-link {
             padding: 1rem 2rem;
-            border: 2px solid white; /* White square border */
+            border: 2px solid white;
             transition: box-shadow 0.3s;
         }
 
         .contact-link:hover {
             color: #a0d995;
-            box-shadow: 0 0 10px white; /* Glow effect on hover */
+            box-shadow: 0 0 10px white;
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hamburger:hover {
+            color: #a0d995;
         }
 
         .page-content {
-            padding: 150px 2rem 2rem; /* Adjusted to prevent overlap */
+            padding: 0 2rem 2rem; /* No padding-top; it will be set dynamically by JavaScript */
             min-height: calc(100vh - 200px);
         }
 
@@ -168,6 +181,100 @@
             font-style: italic;
             margin: 0.5rem 0;
         }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            /* Adjust header for mobile */
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .header-bottom {
+                flex-direction: row;
+                gap: 1rem;
+            }
+
+            .search-container {
+                flex: 1;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            /* Adjust page content */
+            .page-content {
+                padding: 0 1rem 1rem; /* No padding-top; it will be set dynamically by JavaScript */
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .service-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .service-section.reverse {
+                flex-direction: column;
+            }
+
+            .service-image {
+                width: 300px;
+                height: 225px;
+                margin: 1rem 0;
+            }
+
+            .service-text {
+                font-size: 1rem;
+            }
+
+            .service-text h3 {
+                font-size: 1.3rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .service-image {
+                width: 250px;
+                height: 187.5px;
+            }
+
+            .service-text {
+                font-size: 0.9rem;
+            }
+
+            .service-text h3 {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -181,6 +288,7 @@
                 <input type="text" class="search-bar" placeholder="Search...">
                 <span class="cancel-icon" style="display: none;">✖</span>
             </div>
+            <a href="menu.html" class="hamburger">☰</a>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -198,12 +306,10 @@
     <div class="page-content">
         <h1>Digital Renderings</h1>
 
-
         <!-- 01 (Image Left, Text Right) -->
         <div class="service-section">
             <img src="Logos/official.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
             <div class="service-text">
-                
                 <h3>DOATOONs Official Logo</h3>
                 <p>xyz1</p>
             </div>
@@ -213,7 +319,6 @@
         <div class="service-section reverse">
             <img src="Logos/DOATOONs Epic.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
             <div class="service-text">
-                
                 <h3>DOATOONs Epic Logo</h3>
                 <p>xyz1</p>
             </div>
@@ -223,7 +328,6 @@
         <div class="service-section">
             <img src="Images/dr strange.png" alt="Rendering 01" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+01';">
             <div class="service-text">
-              
                 <h3>Doctor Strange</h3>
                 <p>xyz1</p>
             </div>
@@ -233,7 +337,6 @@
         <div class="service-section reverse">
             <img src="Images/eye.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
             <div class="service-text">
-                
                 <h3>The Blue Eye</h3>
                 <p>xyz1</p>
             </div>
@@ -243,7 +346,6 @@
         <div class="service-section">
             <img src="Images/Ring of fire 2.png" alt="Rendering 03" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+03';">
             <div class="service-text">
-                
                 <h3>The Ring of Fire</h3>
                 <p>xyz1</p>
             </div>
@@ -253,7 +355,6 @@
         <div class="service-section reverse">
             <img src="Images/Spongebob's house.png" alt="Rendering 04" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+04';">
             <div class="service-text">
-                
                 <h3>Spongebob's House Transformation</h3>
                 <p>xyz1</p>
             </div>
@@ -269,38 +370,6 @@
         <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
     </footer>
 
-    <script>
-        const searchBar = document.querySelector('.search-bar');
-        const searchIcon = document.querySelector('.search-icon');
-        const cancelIcon = document.querySelector('.cancel-icon');
-
-        // Search on icon click
-        searchIcon.addEventListener('click', () => {
-            const query = searchBar.value.trim();
-            if (query) {
-                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-            }
-        });
-
-        // Search on Enter key
-        searchBar.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = searchBar.value.trim();
-                if (query) {
-                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-                }
-            }
-        });
-
-        // Show/hide cancel icon and clear text
-        searchBar.addEventListener('input', () => {
-            cancelIcon.style.display = searchBar.value ? 'block' : 'none';
-        });
-
-        cancelIcon.addEventListener('click', () => {
-            searchBar.value = '';
-            cancelIcon.style.display = 'none';
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
