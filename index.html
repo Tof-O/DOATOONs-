@@ -19,7 +19,7 @@
         }
 
         header {
-            background: #000000; /* Black background */
+            background: #000000;
             padding: 1rem 2rem;
             position: fixed;
             width: 100%;
@@ -40,7 +40,7 @@
             align-items: center;
             width: 100%;
             padding-top: 1rem;
-            border-top: 1px solid white; /* White line divider */
+            border-top: 1px solid white;
         }
 
         .search-container {
@@ -50,7 +50,7 @@
         }
 
         .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem; /* Adjusted padding for icons */
+            padding: 0.5rem 0.5rem 0.5rem 2rem;
             border: none;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
@@ -63,7 +63,7 @@
             left: 10px;
             color: #a0d995;
             font-size: 1.2rem;
-            cursor: pointer; /* Clickable */
+            cursor: pointer;
         }
 
         .cancel-icon {
@@ -95,13 +95,26 @@
 
         .contact-link {
             padding: 1rem 2rem;
-            border: 2px solid white; /* White square border */
+            border: 2px solid white;
             transition: box-shadow 0.3s;
         }
 
         .contact-link:hover {
             color: #a0d995;
-            box-shadow: 0 0 10px rgb(255, 255, 255); /* Glow effect on hover */
+            box-shadow: 0 0 10px rgb(255, 255, 255);
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: none; /* Hidden by default (visible on mobile) */
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hamburger:hover {
+            color: #a0d995;
         }
 
         .main-content {
@@ -184,6 +197,101 @@
             font-style: italic;
             margin: 0.5rem 0;
         }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            /* Adjust header for mobile */
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .header-bottom {
+                flex-direction: row; /* Keep search and hamburger side by side */
+                gap: 1rem;
+            }
+
+            .search-container {
+                flex: 1; /* Allow search bar to take available space */
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            /* Hide navigation links on mobile */
+            nav {
+                display: none;
+            }
+
+            /* Show hamburger menu on mobile */
+            .hamburger {
+                display: block;
+            }
+
+            /* Adjust main content */
+            .main-content {
+                margin-top: 80px; /* Reduced to account for smaller header */
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-text {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+
+            /* Adjust gallery for mobile */
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .gallery-item img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .gallery-item a {
+                font-size: 1.2rem;
+            }
+
+            /* Adjust footer */
+            footer {
+                padding: 1rem;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1rem;
+            }
+
+            .gallery-item img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gallery-item a {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -197,6 +305,7 @@
                 <input type="text" class="search-bar" placeholder="Search...">
                 <span class="cancel-icon" style="display: none;">✖</span>
             </div>
+            <a href="menu.html" class="hamburger">☰</a>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
