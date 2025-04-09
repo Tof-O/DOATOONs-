@@ -106,7 +106,7 @@
 
         /* Hamburger Menu Icon */
         .hamburger {
-            display: none; /* Hidden by default (visible on mobile) */
+            display: none;
             font-size: 2rem;
             color: white;
             cursor: pointer;
@@ -118,8 +118,8 @@
         }
 
         .main-content {
-            margin-top: 100px;
             padding: 2rem;
+            /* Removed margin-top; it will be set dynamically by JavaScript */
         }
 
         .banner img {
@@ -210,32 +210,30 @@
             }
 
             .header-bottom {
-                flex-direction: row; /* Keep search and hamburger side by side */
+                flex-direction: row;
                 gap: 1rem;
             }
 
             .search-container {
-                flex: 1; /* Allow search bar to take available space */
+                flex: 1;
             }
 
             .search-bar {
                 width: 100%;
             }
 
-            /* Hide navigation links on mobile */
             nav {
                 display: none;
             }
 
-            /* Show hamburger menu on mobile */
             .hamburger {
                 display: block;
             }
 
             /* Adjust main content */
             .main-content {
-                margin-top: 80px; /* Reduced to account for smaller header */
                 padding: 1rem;
+                /* Removed margin-top; it will be set dynamically by JavaScript */
             }
 
             h1 {
@@ -247,7 +245,6 @@
                 max-width: 100%;
             }
 
-            /* Adjust gallery for mobile */
             .gallery {
                 flex-direction: column;
                 align-items: center;
@@ -263,7 +260,6 @@
                 font-size: 1.2rem;
             }
 
-            /* Adjust footer */
             footer {
                 padding: 1rem;
             }
@@ -354,11 +350,11 @@
     </footer>
 
     <script>
+        // Existing search bar script
         const searchBar = document.querySelector('.search-bar');
         const searchIcon = document.querySelector('.search-icon');
         const cancelIcon = document.querySelector('.cancel-icon');
 
-        // Search on icon click
         searchIcon.addEventListener('click', () => {
             const query = searchBar.value.trim();
             if (query) {
@@ -366,7 +362,6 @@
             }
         });
 
-        // Search on Enter key
         searchBar.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 const query = searchBar.value.trim();
@@ -376,7 +371,6 @@
             }
         });
 
-        // Show/hide cancel icon and clear text
         searchBar.addEventListener('input', () => {
             cancelIcon.style.display = searchBar.value ? 'block' : 'none';
         });
@@ -384,6 +378,21 @@
         cancelIcon.addEventListener('click', () => {
             searchBar.value = '';
             cancelIcon.style.display = 'none';
+        });
+
+        // Add script to dynamically adjust content margin based on header height
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const mainContent = document.querySelector('.main-content');
+            const headerHeight = header.offsetHeight;
+            mainContent.style.marginTop = `${headerHeight}px`;
+        });
+
+        window.addEventListener('resize', () => {
+            const header = document.querySelector('header');
+            const mainContent = document.querySelector('.main-content');
+            const headerHeight = header.offsetHeight;
+            mainContent.style.marginTop = `${headerHeight}px`;
         });
     </script>
 </body>
