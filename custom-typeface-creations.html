@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOATOONS - Custom Typeface Creations</title>
+    <title>DOATOONS - Menu</title>
     <style>
         * {
             margin: 0;
@@ -15,352 +15,93 @@
         body {
             background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
             color: white;
-            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
             background: #000000;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            padding: 1rem;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo img {
-            height: 70px;
+            height: 50px;
         }
 
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px solid white;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
+        .back-btn {
             color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .cancel-icon {
-            position: absolute;
-            right: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
             text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #a0d995;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            transition: box-shadow 0.3s;
-        }
-
-        .contact-link:hover {
-            color: #a0d995;
-            box-shadow: 0 0 10px white;
-        }
-
-        .page-content {
-            padding: 150px 2rem 2rem;
-            min-height: calc(100vh - 200px);
-        }
-
-        .typeface-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .typeface-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-        }
-
-        .typeface-header .title-container {
-            text-align: left;
-            margin-left: 10%;
-        }
-
-        .typeface-header h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #cccccc;
-            display: block;
-        }
-
-        .typeface-header h1 span {
-            color: white;
-            font-size: 2.5rem;
-        }
-
-        .typeface-header .learn-more {
-            color: #a0d995;
-            text-decoration: underline;
             font-size: 1.2rem;
-            transition: color 0.3s;
         }
 
-        .typeface-header .learn-more:hover {
+        .back-btn:hover {
             color: #ffffff;
         }
 
-        .typeface-details {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            gap: 2rem;
-        }
-
-        .typeface-details.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .typeface-details img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border: 2px solid #a0d995;
-            border-radius: 10px;
-        }
-
-        .typeface-details .text-content {
+        .menu-content {
             flex: 1;
-        }
-
-        .typeface-details h2 {
-            font-size: 1.8rem;
-            color: #a0d995;
-            margin-bottom: 0.5rem;
-        }
-
-        .typeface-details h3 {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .typeface-details p {
-            font-size: 1rem;
-            color: #cccccc;
-        }
-
-        .get-yours-btn {
-            display: block;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .get-yours-btn:hover {
-            background: #a0d995;
-            color: #1a2a1f;
-        }
-
-        footer {
-            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 2rem;
             text-align: center;
         }
 
+        .menu-content h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .menu-content ul {
+            list-style: none;
+        }
+
+        .menu-content ul li {
+            margin: 1rem 0;
+        }
+
+        .menu-content ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .menu-content ul li a:hover {
+            color: #a0d995;
+        }
+
+        .menu-content .contact-link {
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            transition: box-shadow 0.3s;
+        }
+
+        .menu-content .contact-link:hover {
+            color: #a0d995;
+            box-shadow: 0 0 10px white;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 1rem;
+            text-align: center;
+        }
+
         .footer-logo img {
-            height: 60px;
+            height: 40px;
             margin-bottom: 1rem;
         }
 
         .slogan {
             font-style: italic;
             margin: 0.5rem 0;
-        }
-
-        /* Responsive Design for Mobile */
-        @media (max-width: 768px) {
-            /* Adjust header for mobile */
-            header {
-                padding: 1rem;
-            }
-
-            .logo img {
-                height: 50px; /* Smaller logo on mobile */
-            }
-
-            .header-bottom {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .search-container {
-                width: 100%;
-            }
-
-            .search-bar {
-                width: 100%; /* Full width search bar on mobile */
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-
-            .contact-link {
-                padding: 0.5rem 1rem; /* Smaller padding for mobile */
-            }
-
-            /* Adjust page content padding */
-            .page-content {
-                padding: 100px 1rem 1rem; /* Reduced padding for mobile */
-            }
-
-            /* Adjust typeface header */
-            .typeface-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            .typeface-header .title-container {
-                margin-left: 0;
-            }
-
-            .typeface-header h1 {
-                font-size: 2rem; /* Smaller font size on mobile */
-            }
-
-            .typeface-header h1 span {
-                font-size: 1.5rem;
-            }
-
-            .typeface-header .learn-more {
-                font-size: 1rem;
-            }
-
-            /* Stack typeface details vertically */
-            .typeface-details {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .typeface-details.reverse {
-                flex-direction: column; /* Ensure reverse also stacks vertically */
-            }
-
-            .typeface-details img {
-                width: 100%;
-                max-width: 300px; /* Ensure image doesn't overflow */
-                height: auto; /* Maintain aspect ratio */
-            }
-
-            .typeface-details h2 {
-                font-size: 1.5rem;
-            }
-
-            .typeface-details h3 {
-                font-size: 1rem;
-            }
-
-            .typeface-details p {
-                font-size: 0.9rem;
-            }
-
-            /* Adjust button */
-            .get-yours-btn {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-            }
-
-            /* Adjust footer */
-            footer {
-                padding: 1rem;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
-        }
-
-        /* Extra small screens (e.g., very small phones) */
-        @media (max-width: 480px) {
-            .typeface-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .typeface-header h1 span {
-                font-size: 1.2rem;
-            }
-
-            .typeface-details h2 {
-                font-size: 1.2rem;
-            }
-
-            .typeface-details h3 {
-                font-size: 0.9rem;
-            }
-
-            .typeface-details p {
-                font-size: 0.8rem;
-            }
-
-            .get-yours-btn {
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
@@ -369,157 +110,21 @@
         <div class="logo">
             <img src="Logos/Official.png" alt="DOATOONS Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
         </div>
-        <div class="header-bottom">
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-bar" placeholder="Search...">
-                <span class="cancel-icon" style="display: none;">✖</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="animations.html">Animations</a></li>
-                    <li><a href="designs.html">Designs</a></li>
-                    <li><a href="visual-effects.html">Visual Effects</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about-us.html">About</a></li>
-                    <li><a href="contact-us.html" class="contact-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="javascript:history.back()" class="back-btn">Back</a>
     </header>
 
-    <div class="page-content">
-        <div class="typeface-content">
-            <div class="typeface-header">
-                <div class="title-container">
-                    <h1>BROWSE</h1>
-                    <h1><span>Custom Typeface Creations</span></h1>
-                </div>
-                <a href="stylistic-accents.html" class="learn-more">Learn More</a>
-            </div>
-            <div class="typeface-details" id="item-1">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+1';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-2">
-                <img src="Images/Elon Musk.png" alt="Elon Reeve Musk Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+2';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-3">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+3';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-4">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+4';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-5">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+5';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-6">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+6';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-7">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+7';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-8">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+8';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-9">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+9';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-10">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+10';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-11">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+11';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-12">
-                <img src="Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+12';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <a href="typeface-order.html" class="get-yours-btn">Get Yours Now</a>
-        </div>
+    <div class="menu-content">
+        <h1>Menu</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="custom-typeface-creations.html">Custom Typeface Creations</a></li>
+            <li><a href="animations.html">Animations</a></li>
+            <li><a href="designs.html">Designs</a></li>
+            <li><a href="visual-effects.html">Visual Effects</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about-us.html">About</a></li>
+            <li><a href="contact-us.html" class="contact-link">Contact</a></li>
+        </ul>
     </div>
 
     <footer>
@@ -530,37 +135,5 @@
         <p class="slogan">"...anything, but animated..."</p>
         <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
     </footer>
-
-    <script>
-        // Search bar functionality
-        const searchBar = document.querySelector('.search-bar');
-        const searchIcon = document.querySelector('.search-icon');
-        const cancelIcon = document.querySelector('.cancel-icon');
-
-        searchIcon.addEventListener('click', () => {
-            const query = searchBar.value.trim();
-            if (query) {
-                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-            }
-        });
-
-        searchBar.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                const query = searchBar.value.trim();
-                if (query) {
-                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-                }
-            }
-        });
-
-        searchBar.addEventListener('input', () => {
-            cancelIcon.style.display = searchBar.value ? 'block' : 'none';
-        });
-
-        cancelIcon.addEventListener('click', () => {
-            searchBar.value = '';
-            cancelIcon.style.display = 'none';
-        });
-    </script>
 </body>
 </html>
