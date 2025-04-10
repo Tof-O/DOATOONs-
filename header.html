@@ -1,0 +1,158 @@
+<!-- header.html -->
+<header>
+    <div class="logo">
+        <img src="Logos/Official.png" alt="DOATOONS Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+    </div>
+    <div class="header-bottom">
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-bar" placeholder="Search...">
+            <span class="cancel-icon" style="display: none;">✖</span>
+        </div>
+        <a href="menu.html" class="hamburger">☰</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="animations.html">Animations</a></li>
+                <li><a href="designs.html">Designs</a></li>
+                <li><a href="visual-effects.html">Visual Effects</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about-us.html">About</a></li>
+                <li><a href="contact-us.html" class="contact-link">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<style>
+    header {
+        background: #000000;
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo img {
+        height: 70px;
+    }
+
+    .header-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-top: 1rem;
+        border-top: 1px solid white;
+    }
+
+    .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-bar {
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        border: none;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        width: 200px;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 10px;
+        color: #a0d995;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .cancel-icon {
+        position: absolute;
+        right: 10px;
+        color: #a0d995;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin: 0 1rem;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #a0d995;
+    }
+
+    .contact-link {
+        padding: 1rem 2rem;
+        border: 2px solid white;
+        transition: box-shadow 0.3s;
+    }
+
+    .contact-link:hover {
+        color: #a0d995;
+        box-shadow: 0 0 10px white;
+    }
+
+    /* Hamburger Menu Icon */
+    .hamburger {
+        display: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .hamburger:hover {
+        color: #a0d995;
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+        header {
+            padding: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .header-bottom {
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .search-container {
+            flex: 1;
+        }
+
+        .search-bar {
+            width: 100%;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+    }
+</style>
