@@ -1,18 +1,46 @@
 <!-- footer.html -->
 <footer>
-    <div class="footer-logo">
-        <img src="Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+    <div class="footer-container">
+        <div class="footer-section">
+            <div class="footer-logo">
+                <img src="/Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
+            </div>
+            <p class="footer-title">DOATOONs</p>
+            <p class="slogan">DOATOONs Bio</p>
+            <p><a href="mailto:jtcotoons@gmail.com" class="email-link">jtcotoons@gmail.com</a></p>
+        </div>
+        <div class="footer-section">
+            <p class="footer-subtitle">What do people think?</p>
+        </div>
+        <div class="footer-section">
+            <div class="footer-icon">
+                <img src="/Logos/Official.png" alt="DOATOONS Icon" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Icon';">
+            </div>
+        </div>
     </div>
-    <p>DOATOONs</p>
-    <p class="slogan">"...anything, but animated..."</p>
-    <p><a href="mailto:jtcotoons@gmail.com" style="color: #a0d995; text-decoration: none; transition: color 0.3s;">jtcotoons@gmail.com</a></p>
 </footer>
 
 <style>
     footer {
-        background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+        background: #ffffff; /* White background */
         padding: 2rem;
+        color: #000000; /* Black text for contrast on white background */
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
         text-align: center;
+        flex: 1;
+        min-width: 200px;
+        margin: 1rem 0;
     }
 
     .footer-logo img {
@@ -20,9 +48,34 @@
         margin-bottom: 1rem;
     }
 
+    .footer-icon img {
+        height: 40px;
+    }
+
+    .footer-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
     .slogan {
-        font-style: italic;
-        margin: 0.5rem 0;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-subtitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .email-link {
+        color: #a0d995;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .email-link:hover {
+        color: #ffffff;
     }
 
     @media (max-width: 768px) {
@@ -30,8 +83,47 @@
             padding: 1rem;
         }
 
+        .footer-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-section {
+            margin: 0.5rem 0;
+        }
+
         .footer-logo img {
             height: 40px;
+        }
+
+        .footer-icon img {
+            height: 30px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+        }
+
+        .slogan {
+            font-size: 1rem;
+        }
+
+        .footer-subtitle {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-title {
+            font-size: 1rem;
+        }
+
+        .slogan {
+            font-size: 0.9rem;
+        }
+
+        .footer-subtitle {
+            font-size: 0.9rem;
         }
     }
 </style>
