@@ -5,16 +5,18 @@
             <div class="footer-logo">
                 <img src="/Logos/Official.png" alt="DOATOONS Footer Logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Logo';">
             </div>
-            <p class="footer-title">DOATOONs</p>
-            <p class="slogan">DOATOONs Bio</p>
+            <p class="footer-title"><a href="/">DOATOONs</a></p>
+            <p class="slogan">"...anything, but animated..."</p>
             <p><a href="mailto:jtcotoons@gmail.com" class="email-link">jtcotoons@gmail.com</a></p>
         </div>
         <div class="footer-section">
-            <p class="footer-subtitle">What do people think?</p>
+            <p class="footer-subtitle"><a href="/services/">Our Clients</a></p>
         </div>
         <div class="footer-section">
             <div class="footer-icon">
-                <img src="/Logos/Official.png" alt="DOATOONS Icon" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=Icon';">
+                <a href="https://www.youtube.com/@doatoons" target="_blank">
+                    <img src="/Logos/youtube-icon.png" alt="YouTube Icon" onerror="this.onerror=null; this.src='https://via.placeholder.com/40x40?text=YouTube';">
+                </a>
             </div>
         </div>
     </div>
@@ -22,9 +24,9 @@
 
 <style>
     footer {
-        background: #ffffff; /* White background */
+        background: linear-gradient(to right, #2a3d2f, #1a2a1f);
         padding: 2rem;
-        color: #000000; /* Black text for contrast on white background */
+        color: #ffffff;
     }
 
     .footer-container {
@@ -41,6 +43,11 @@
         flex: 1;
         min-width: 200px;
         margin: 1rem 0;
+        border-right: 1px solid #a0d995;
+    }
+
+    .footer-section:last-child {
+        border-right: none;
     }
 
     .footer-logo img {
@@ -58,14 +65,30 @@
         margin-bottom: 0.5rem;
     }
 
+    .footer-title a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .footer-title a:hover {
+        color: #a0d995;
+    }
+
     .slogan {
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
+        font-style: italic;
     }
 
-    .footer-subtitle {
+    .footer-subtitle a {
         font-size: 1.2rem;
         font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .footer-subtitle a:hover {
+        color: #a0d995;
     }
 
     .email-link {
@@ -90,6 +113,12 @@
 
         .footer-section {
             margin: 0.5rem 0;
+            border-right: none;
+            border-bottom: 1px solid #a0d995;
+        }
+
+        .footer-section:last-child {
+            border-bottom: none;
         }
 
         .footer-logo img {
@@ -108,7 +137,7 @@
             font-size: 1rem;
         }
 
-        .footer-subtitle {
+        .footer-subtitle a {
             font-size: 1rem;
         }
     }
@@ -122,7 +151,7 @@
             font-size: 0.9rem;
         }
 
-        .footer-subtitle {
+        .footer-subtitle a {
             font-size: 0.9rem;
         }
     }
