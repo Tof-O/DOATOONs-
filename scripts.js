@@ -3,10 +3,10 @@
 // Function to set dynamic padding for page content based on header height
 function setPageContentPadding() {
     const header = document.querySelector('header');
-    const pageContent = document.querySelector('.page-content');
+    const pageContent = document.querySelector('.main-content') || document.querySelector('.page-content');
     if (header && pageContent) {
         const headerHeight = header.offsetHeight;
-        pageContent.style.paddingTop = `${headerHeight + 20}px`; // Add extra space
+        pageContent.style.paddingTop = `${headerHeight + 20}px`; // Add extra space to avoid overlap
     }
 }
 
@@ -49,13 +49,18 @@ function initializeSearchBar() {
 
 // Function to load the header
 function loadHeader() {
-    fetch('header.html')
+    const path = window.location.pathname.split('/').slice(0, -1).join('/');
+    const headerPath = path ? `${path}/header.html` : 'header.html';
+
+    fetch(headerPath)
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
             // After header is loaded, initialize search bar and set padding
             initializeSearchBar();
             setPageContentPadding();
+            // Ensure padding is updated on window resize
+            window.addEventListener('resize', setPageContentPadding);
         })
         .catch(error => {
             console.error('Error loading header:', error);
