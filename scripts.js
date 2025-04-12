@@ -6,7 +6,7 @@ function setPageContentPadding() {
     const pageContent = document.querySelector('.main-content') || document.querySelector('.page-content');
     if (header && pageContent) {
         const headerHeight = header.offsetHeight;
-        pageContent.style.paddingTop = `${headerHeight + 20}px`; // Add extra space to avoid overlap
+        pageContent.style.paddingTop = `${headerHeight + 20}px`;
     }
 }
 
@@ -56,10 +56,8 @@ function loadHeader() {
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
-            // After header is loaded, initialize search bar and set padding
             initializeSearchBar();
             setPageContentPadding();
-            // Ensure padding is updated on window resize
             window.addEventListener('resize', setPageContentPadding);
         })
         .catch(error => {
@@ -68,5 +66,24 @@ function loadHeader() {
         });
 }
 
-// Load the header and initialize everything when the page loads
-document.addEventListener('DOMContentLoaded', loadHeader);
+// Function to load the footer
+function loadFooter() {
+    const path = window.location.pathname.split('/').slice(0, -1).join('/');
+    const footerPath = path ? `${path}/footer.html` : 'footer.html';
+
+    fetch(footerPath)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading footer:', error);
+            document.getElementById('footer-placeholder').innerHTML = '<p>Error loading footer. Please try again later.</p>';
+        });
+}
+
+// Load the header and footer when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadHeader();
+    loadFooter();
+});
