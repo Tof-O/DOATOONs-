@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - 3D Animations (Coming Soon)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .page-content {
+            padding: 0 2rem 2rem;
+            min-height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .coming-soon-text {
+            max-width: 600px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .placeholder-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #a0d995;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-content {
+                padding: 0 1rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .coming-soon-text {
+                font-size: 1rem;
+            }
+
+            .placeholder-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .coming-soon-text {
+                font-size: 0.9rem;
+            }
+
+            .placeholder-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-content">
+        <h1>3D Animations - Coming Soon</h1>
+        <img src="https://via.placeholder.com/200x200?text=3D+Animation" alt="3D Animation Placeholder" class="placeholder-image">
+        <p class="coming-soon-text">We’re working on bringing you stunning 3D animations. Check back soon!</p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
