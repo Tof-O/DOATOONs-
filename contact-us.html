@@ -18,107 +18,8 @@
             line-height: 1.6;
         }
 
-        header {
-            background: #000000;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .logo img {
-            height: 70px;
-        }
-
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px solid white;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .cancel-icon {
-            position: absolute;
-            right: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #a0d995;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            transition: box-shadow 0.3s;
-        }
-
-        .contact-link:hover {
-            color: #a0d995;
-            box-shadow: 0 0 10px white;
-        }
-
-        /* Hamburger Menu Icon */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .hamburger:hover {
-            color: #a0d995;
-        }
-
         .page-content {
-            padding: 0 2rem 2rem; /* No padding-top; it will be set dynamically by JavaScript */
+            padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
             text-align: center;
         }
@@ -188,23 +89,6 @@
             transform: scale(1.05);
         }
 
-        footer {
-            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-
-        .slogan {
-            font-style: italic;
-            margin: 0.5rem 0;
-        }
-
-        /* Error message styling */
         .error-message {
             color: #ff6b6b;
             font-size: 0.9rem;
@@ -212,41 +96,9 @@
             display: none;
         }
 
-        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
-            /* Adjust header for mobile */
-            header {
-                padding: 1rem;
-            }
-
-            .logo img {
-                height: 50px;
-            }
-
-            .header-bottom {
-                flex-direction: row;
-                gap: 1rem;
-            }
-
-            .search-container {
-                flex: 1;
-            }
-
-            .search-bar {
-                width: 100%;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            /* Adjust page content */
             .page-content {
-                padding: 0 1rem 1rem; /* No padding-top; it will be set dynamically by JavaScript */
+                padding: 0 1rem 1rem;
             }
 
             h1 {
@@ -280,17 +132,8 @@
                 padding: 0.6rem;
                 font-size: 0.9rem;
             }
-
-            footer {
-                padding: 1rem;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.5rem;
@@ -353,43 +196,36 @@
         const contactForm = document.getElementById('contactForm');
         const errorMessage = document.getElementById('errorMessage');
 
-        // Email validation regex
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault();
 
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            // Reset error message
             errorMessage.style.display = 'none';
             errorMessage.textContent = '';
 
-            // Validate fields
             if (!name || !email || !message) {
                 errorMessage.textContent = 'Please fill in all fields.';
                 errorMessage.style.display = 'block';
                 return;
             }
 
-            // Validate email format
             if (!emailRegex.test(email)) {
                 errorMessage.textContent = 'Please enter a valid email address.';
                 errorMessage.style.display = 'block';
                 return;
             }
 
-            // Construct the mailto link
             const subject = encodeURIComponent(`Contact Us Message from ${name}`);
             const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
             const mailtoLink = `mailto:jtcotoons@gmail.com?subject=${subject}&body=${body}`;
 
-            // Open the user's email client
             window.location.href = mailtoLink;
 
-            // Optional: Reset the form after submission
             contactForm.reset();
         });
     </script>
