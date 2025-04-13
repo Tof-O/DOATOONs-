@@ -21,7 +21,7 @@ function initializeSearchBar() {
         searchIcon.addEventListener('click', () => {
             const query = searchBar.value.trim();
             if (query) {
-                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                window.location.href = `/DOATOONs-/search/?q=${encodeURIComponent(query)}`;
             }
         });
 
@@ -30,7 +30,7 @@ function initializeSearchBar() {
             if (e.key === 'Enter') {
                 const query = searchBar.value.trim();
                 if (query) {
-                    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+                    window.location.href = `/DOATOONs-/search/?q=${encodeURIComponent(query)}`;
                 }
             }
         });
@@ -49,10 +49,7 @@ function initializeSearchBar() {
 
 // Function to load the header
 function loadHeader() {
-    const path = window.location.pathname.split('/').slice(0, -1).join('/');
-    const headerPath = path ? `${path}/header.html` : 'header.html';
-
-    fetch(headerPath)
+    fetch('/DOATOONs-/header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
@@ -68,10 +65,7 @@ function loadHeader() {
 
 // Function to load the footer
 function loadFooter() {
-    const path = window.location.pathname.split('/').slice(0, -1).join('/');
-    const footerPath = path ? `${path}/footer.html` : 'footer.html';
-
-    fetch(footerPath)
+    fetch('/DOATOONs-/footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer-placeholder').innerHTML = data;
