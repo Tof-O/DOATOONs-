@@ -3,10 +3,194 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/DOATOONs-/home/">
-    <title>Redirecting to DOATOONS Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Animation Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            padding: 2rem;
+            padding-top: 0; /* Ensure no initial padding-top; it will be set dynamically */
+        }
+
+        .banner img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #a0d995, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-text {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            font-size: 1.5rem;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-item {
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.10);
+        }
+
+        .gallery-item img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #a0d995;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-top: 0.5rem;
+            transition: color 0.3s;
+            font-size: 1.5rem;
+        }
+
+        .gallery-item a:hover {
+            color: #a0d995;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            /* Adjust main content */
+            .main-content {
+                padding: 1rem;
+                padding-top: 0; /* Ensure no initial padding-top; it will be set dynamically */
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-text {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .gallery-item img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .gallery-item a {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1rem;
+            }
+
+            .gallery-item img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .gallery-item a {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to the homepage... If you are not redirected, <a href="/DOATOONs-/home/">click here</a>.</p>
+    <div id="header-placeholder"></div>
+    <script src="/DOATOONs-/scripts.js"></script>
+
+    <div id="content">
+        <div class="main-content" id="home">
+            <div class="banner">
+                <img src="/DOATOONs-/Logos/Doatoons.png" alt="DOATOONS Banner" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x200?text=Banner';">
+            </div>
+            <h1>DOATOONs</h1>
+            <p class="welcome-text">Welcome to our animation website! Explore a world of imagination and storytelling through our collection of animated content, from classic hand-drawn animation to cutting-edge 3D graphics. Join us on a journey through the fascinating art of animation.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="/DOATOONs-/Images/Iron man.png" alt="Iron Man" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Iron+Man';">
+                    <a href="animations.html">Animations</a>
+                </div>
+                <div class="gallery-item">
+                    <img src="/DOATOONs-/Images/Goku.png" alt="Goku" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku';">
+                    <a href="visual-effects.html">Visual Effects</a>
+                </div>
+                <div class="gallery-item">
+                    <img src="/DOATOONs-/Images/Ring of Fire 2.png" alt="Ring of Fire" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Ring+of+Fire';">
+                    <a href="designs.html">Designs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="/DOATOONs-/scripts.js"></script>
 </body>
 </html>
