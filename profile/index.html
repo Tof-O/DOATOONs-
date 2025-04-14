@@ -199,15 +199,6 @@
             gap: 0.5rem;
         }
 
-        .social-login-btn.apple {
-            background: white;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
         .social-login-btn img {
             width: 20px;
             height: 20px;
@@ -497,10 +488,6 @@
                         <img src="/DOATOONs-/Logos/google-icon.png" alt="Google Icon">
                         Sign up with Google
                     </button>
-                    <button class="social-login-btn apple" onclick="signInWithApple()">
-                        <img src="/DOATOONs-/Logos/apple-icon.png" alt="Apple Icon">
-                        Sign up with Apple
-                    </button>
                     <p>Already have an account? <a href="#" onclick="signIn()">Sign in</a></p>
                 </div>
             </div>
@@ -520,7 +507,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -573,20 +560,6 @@
         // Sign in with Google
         window.signInWithGoogle = function() {
             const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-                .then(result => {
-                    isLoggedIn = true;
-                    document.getElementById('loginOverlay').style.display = 'none';
-                    document.getElementById('profileContent').style.display = 'block';
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        };
-
-        // Sign in with Apple
-        window.signInWithApple = function() {
-            const provider = new OAuthProvider('apple.com');
             signInWithPopup(auth, provider)
                 .then(result => {
                     isLoggedIn = true;
