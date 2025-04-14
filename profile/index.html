@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000000;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo img {
+            height: 70px;
+        }
+
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 1rem;
+            border-top: 1px solid white;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 0.5rem 0.5rem 0.5rem 2rem;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 200px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cancel-icon {
+            position: absolute;
+            right: 10px;
+            color: #a0d995;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a0d995;
+        }
+
+        .contact-link {
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            transition: box-shadow 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #a0d995;
+            box-shadow: 0 0 10px white;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hamburger:hover {
+            color: #a0d995;
+        }
+
+        .page-content {
+            padding: 0 2rem 2rem;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Login Overlay */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            height: calc(100vh - 160px); /* Adjust for header/footer height */
+            margin-top: 80px; /* Adjust for header height */
+            margin-bottom: 80px; /* Adjust for footer height */
+        }
+
+        .login-left, .login-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .login-right {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .login-right h2 {
+            font-size: 2rem;
+            color: #a0d995;
+            margin-bottom: 1rem;
+        }
+
+        .login-right input {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #a0d995;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+        }
+
+        .login-right button, .social-login-btn {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .social-login-btn.google {
+            background: white;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .social-login-btn.apple {
+            background: white;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .social-login-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .login-right button.create-account {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .login-right button.create-account:hover {
+            background: #1557b0;
+        }
+
+        .login-right .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #cccccc;
+            margin: 1rem 0;
+        }
+
+        .login-right .divider hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid #cccccc;
+        }
+
+        .login-right a {
+            color: #a0d995;
+            text-decoration: none;
+        }
+
+        .login-right a:hover {
+            text-decoration: underline;
+        }
+
+        .terms-text {
+            font-size: 0.9rem;
+            color: #cccccc;
+            text-align: center;
+            max-width: 300px;
+            margin-top: 1rem;
+        }
+
+        .terms-text a {
+            color: #a0d995;
+        }
+
+        /* Profile Content (Hidden Initially) */
+        .profile-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            display: none;
+        }
+
+        .profile-content h1 {
+            font-size: 2.5rem;
+            color: #a0d995;
+            margin-bottom: 1rem;
+        }
+
+        .profile-content p {
+            font-size: 1.2rem;
+            color: #cccccc;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            margin: 1rem 0;
+            border-right: 1px solid #a0d995;
+        }
+
+        .footer-section:last-child {
+            border-right: none;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-icon img {
+            height: 40px;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-title a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer-title a:hover {
+            color: #a0d995;
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .footer-subtitle a {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer-subtitle a:hover {
+            color: #a0d995;
+        }
+
+        .email-link {
+            color: #a0d995;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .header-bottom {
+                flex-direction: row;
+                gap: 1rem;
+            }
+
+            .search-container {
+                flex: 1;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-content {
+                padding: 0 1rem 1rem;
+            }
+
+            .login-container {
+                flex-direction: column;
+                height: calc(100vh - 120px);
+                margin-top: 60px;
+                margin-bottom: 60px;
+            }
+
+            .login-left, .login-right {
+                flex: none;
+                width: 100%;
+            }
+
+            .login-left img {
+                width: 80%;
+                max-height: 200px;
+            }
+
+            .login-right {
+                padding: 1rem;
+            }
+
+            .login-right h2 {
+                font-size: 1.5rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                margin: 0.5rem 0;
+                border-right: none;
+                border-bottom: 1px solid #a0d995;
+            }
+
+            .footer-section:last-child {
+                border-bottom: none;
+            }
+
+            .footer-logo img {
+                height: 40px;
+            }
+
+            .footer-icon img {
+                height: 30px;
+            }
+
+            .footer-title {
+                font-size: 1.2rem;
+            }
+
+            .slogan {
+                font-size: 1rem;
+            }
+
+            .footer-subtitle a {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-right h2 {
+                font-size: 1.2rem;
+            }
+
+            .footer-title {
+                font-size: 1rem;
+            }
+
+            .slogan {
+                font-size: 0.9rem;
+            }
+
+            .footer-subtitle a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-content">
+        <!-- Login Overlay -->
+        <div class="login-overlay" id="loginOverlay">
+            <div class="login-container">
+                <div class="login-left">
+                    <img src="/DOATOONs-/Logos/Doatoons.png" alt="DOATOONS Logo">
+                </div>
+                <div class="login-right">
+                    <h2>Sign Up</h2>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button class="create-account" onclick="createAccount()">Create account</button>
+                    
+                    <div class="divider">
+                        <hr>or<hr>
+                    </div>
+                    <button class="social-login-btn google" onclick="signInWithGoogle()">
+                        <img src="/DOATOONs-/Logos/google-icon.png" alt="Google Icon">
+                        Sign up with Google
+                    </button>
+                    <button class="social-login-btn apple" onclick="signInWithApple()">
+                        <img src="/DOATOONs-/Logos/apple-icon.png" alt="Apple Icon">
+                        Sign up with Apple
+                    </button>
+                    <p>Already have an account? <a href="#" onclick="signIn()">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content (Hidden Initially) -->
+        <div class="profile-content" id="profileContent">
+            <h1>Welcome to Your Profile</h1>
+            <p>This is your personal profile page. Here you can manage your account, view your activity, and more.</p>
+            <button onclick="signOut()">Sign Out</button>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Simulated login state (replace with actual authentication)
+        let isLoggedIn = false;
+
+        // Check login state on page load
+        window.onload = function() {
+            // Check if user is already logged in (e.g., via localStorage or Firebase)
+            const user = localStorage.getItem('user');
+            if (user) {
+                isLoggedIn = true;
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('profileContent').style.display = 'block';
+            }
+        };
+
+        // Create account with email/password (simulated)
+        function createAccount() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (email && password) {
+                // Simulate saving to database (replace with Firebase auth)
+                localStorage.setItem('user', JSON.stringify({ email }));
+                isLoggedIn = true;
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('profileContent').style.display = 'block';
+            } else {
+                alert('Please enter both email and password.');
+            }
+        }
+
+        // Sign in with Google (placeholder)
+        function signInWithGoogle() {
+            // Replace with Firebase Google Auth
+            console.log('Sign in with Google');
+            localStorage.setItem('user', JSON.stringify({ email: 'google@example.com' }));
+            isLoggedIn = true;
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('profileContent').style.display = 'block';
+        }
+
+        // Sign in with Apple (placeholder)
+        function signInWithApple() {
+            // Replace with Firebase Apple Auth
+            console.log('Sign in with Apple');
+            localStorage.setItem('user', JSON.stringify({ email: 'apple@example.com' }));
+            isLoggedIn = true;
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.getElementById('profileContent').style.display = 'block';
+        }
+
+        // Sign in (placeholder for existing account)
+        function signIn() {
+            // Replace with actual sign-in logic
+            alert('Sign-in functionality coming soon!');
+        }
+
+        // Sign out
+        function signOut() {
+            localStorage.removeItem('user');
+            isLoggedIn = false;
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('profileContent').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
