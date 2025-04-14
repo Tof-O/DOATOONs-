@@ -138,9 +138,9 @@
         .login-container {
             display: flex;
             width: 100%;
-            height: calc(100vh - 160px); /* Adjust for header/footer height */
-            margin-top: 80px; /* Adjust for header height */
-            margin-bottom: 80px; /* Adjust for footer height */
+            height: calc(100vh - 160px);
+            margin-top: 80px;
+            margin-bottom: 80px;
         }
 
         .login-left, .login-right {
@@ -354,7 +354,6 @@
             color: #ffffff;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
@@ -488,7 +487,9 @@
                     <input type="email" id="email" placeholder="Email" required>
                     <input type="password" id="password" placeholder="Password" required>
                     <button class="create-account" onclick="createAccount()">Create account</button>
-                    
+                    <div class="terms-text">
+                        By signing up, you agree to the <a href="/DOATOONs-/terms-of-service/">Terms of Service</a> and <a href="/DOATOONs-/privacy-policy/">Privacy Policy</a>, including <a href="/DOATOONs-/cookie-policy/">Cookie Use</a>.
+                    </div>
                     <div class="divider">
                         <hr>or<hr>
                     </div>
@@ -515,70 +516,121 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="/DOATOONs-/scripts.js"></script>
-    <script>
-        // Simulated login state (replace with actual authentication)
-        let isLoggedIn = false;
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, OAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBj8HeVOqquJd49bgp7TrZPg_FRJBDeiBg",
+            authDomain: "doatoons.firebaseapp.com",
+            projectId: "doatoons",
+            storageBucket: "doatoons.firebasestorage.app",
+            messagingSenderId: "778176872877",
+            appId: "1:778176872877:web:7a1df7dd1c6f486277a124",
+            measurementId: "G-DLS73GX39L"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
         // Check login state on page load
-        window.onload = function() {
-            // Check if user is already logged in (e.g., via localStorage or Firebase)
-            const user = localStorage.getItem('user');
+        let isLoggedIn = false;
+        onAuthStateChanged(auth, user => {
             if (user) {
                 isLoggedIn = true;
                 document.getElementById('loginOverlay').style.display = 'none';
                 document.getElementById('profileContent').style.display = 'block';
+            } else {
+                isLoggedIn = false;
+                document.getElementById('loginOverlay').style.display = 'flex';
+                document.getElementById('profileContent').style.display = 'none';
             }
-        };
+        });
 
-        // Create account with email/password (simulated)
-        function createAccount() {
+        // Create account with email/password
+        window.createAccount = function() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             if (email && password) {
-                // Simulate saving to database (replace with Firebase auth)
-                localStorage.setItem('user', JSON.stringify({ email }));
-                isLoggedIn = true;
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('profileContent').style.display = 'block';
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then(userCredential => {
+                        isLoggedIn = true;
+                        document.getElementById('loginOverlay').style.display = 'none';
+                        document.getElementById('profileContent').style.display = 'block';
+                    })
+                    .catch(error => {
+                        alert(error.message);
+                    });
             } else {
                 alert('Please enter both email and password.');
             }
-        }
+        };
 
-        // Sign in with Google (placeholder)
-        function signInWithGoogle() {
-            // Replace with Firebase Google Auth
-            console.log('Sign in with Google');
-            localStorage.setItem('user', JSON.stringify({ email: 'google@example.com' }));
-            isLoggedIn = true;
-            document.getElementById('loginOverlay').style.display = 'none';
-            document.getElementById('profileContent').style.display = 'block';
-        }
+        // Sign in with Google
+        window.signInWithGoogle = function() {
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then(result => {
+                    isLoggedIn = true;
+                    document.getElementById('loginOverlay').style.display = 'none';
+                    document.getElementById('profileContent').style.display = 'block';
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        };
 
-        // Sign in with Apple (placeholder)
-        function signInWithApple() {
-            // Replace with Firebase Apple Auth
-            console.log('Sign in with Apple');
-            localStorage.setItem('user', JSON.stringify({ email: 'apple@example.com' }));
-            isLoggedIn = true;
-            document.getElementById('loginOverlay').style.display = 'none';
-            document.getElementById('profileContent').style.display = 'block';
-        }
+        // Sign in with Apple
+        window.signInWithApple = function() {
+            const provider = new OAuthProvider('apple.com');
+            signInWithPopup(auth, provider)
+                .then(result => {
+                    isLoggedIn = true;
+                    document.getElementById('loginOverlay').style.display = 'none';
+                    document.getElementById('profileContent').style.display = 'block';
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        };
 
-        // Sign in (placeholder for existing account)
-        function signIn() {
-            // Replace with actual sign-in logic
-            alert('Sign-in functionality coming soon!');
-        }
+        // Sign in (for existing account)
+        window.signIn = function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (email && password) {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then(userCredential => {
+                        isLoggedIn = true;
+                        document.getElementById('loginOverlay').style.display = 'none';
+                        document.getElementById('profileContent').style.display = 'block';
+                    })
+                    .catch(error => {
+                        alert(error.message);
+                    });
+            } else {
+                alert('Please enter both email and password.');
+            }
+        };
 
         // Sign out
-        function signOut() {
-            localStorage.removeItem('user');
-            isLoggedIn = false;
-            document.getElementById('loginOverlay').style.display = 'flex';
-            document.getElementById('profileContent').style.display = 'none';
-        }
+        window.signOut = function() {
+            signOut(auth)
+                .then(() => {
+                    isLoggedIn = false;
+                    document.getElementById('loginOverlay').style.display = 'flex';
+                    document.getElementById('profileContent').style.display = 'none';
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        };
     </script>
+
+    <script src="/DOATOONs-/scripts.js"></script>
 </body>
 </html>
