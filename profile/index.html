@@ -185,13 +185,14 @@
             transition: background 0.3s;
         }
 
-        .social-login-btn.google {
+        .social-login-btn.google, .social-login-btn.doatoons {
             background: white;
             color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .social-login-btn img {
@@ -238,12 +239,6 @@
             text-align: center;
             display: none;
             padding-top: 2rem;
-        }
-
-        .profile-content h1 {
-            font-size: 2.5rem;
-            color: #a0d995;
-            margin-bottom: 1rem;
         }
 
         .profile-picture-container {
@@ -537,6 +532,10 @@
                     <button class="social-login-btn google" onclick="signInWithGoogle()">
                         <img src="/DOATOONs-/Logos/google-icon.png" alt="Google Icon">
                         Log in with Google
+                    </button>
+                    <button class="social-login-btn doatoons" onclick="signInWithDoatoons()">
+                        <img src="/DOATOONs-/Logos/Official.png" alt="DOATOONs Icon">
+                        Log in with DOATOONs
                     </button>
                     <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
                 </div>
