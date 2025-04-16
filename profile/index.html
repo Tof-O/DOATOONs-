@@ -122,48 +122,48 @@
         }
 
         /* Login Overlay */
-        .login-overlay {
+        .login-overlay, .register-overlay {
             width: 100%;
             background: rgba(0, 0, 0, 0.95);
             z-index: 500;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: calc(100vh - 200px); /* Adjust for header and footer */
+            min-height: calc(100vh - 200px);
         }
 
-        .login-container {
+        .login-container, .register-container {
             display: flex;
             width: 100%;
-            min-height: calc(100vh - 200px); /* Ensure it fits between header and footer */
+            min-height: calc(100vh - 200px);
         }
 
-        .login-left, .login-right {
+        .login-left, .login-right, .register-left, .register-right {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .login-left img {
+        .login-left img, .register-left img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
 
-        .login-right {
+        .login-right, .register-right {
             flex-direction: column;
             gap: 1rem;
             padding: 2rem;
         }
 
-        .login-right h2 {
+        .login-right h2, .register-right h2 {
             font-size: 2rem;
             color: #a0d995;
             margin-bottom: 1rem;
         }
 
-        .login-right input {
+        .login-right input, .register-right input {
             width: 100%;
             max-width: 300px;
             padding: 0.5rem;
@@ -174,7 +174,7 @@
             color: white;
         }
 
-        .login-right button, .social-login-btn {
+        .login-right button, .register-right button, .social-login-btn {
             width: 100%;
             max-width: 300px;
             padding: 0.5rem;
@@ -199,16 +199,16 @@
             height: 20px;
         }
 
-        .login-right button.create-account {
+        .login-right button.login-btn, .register-right button.create-account {
             background: #1a73e8;
             color: white;
         }
 
-        .login-right button.create-account:hover {
+        .login-right button.login-btn:hover, .register-right button.create-account:hover {
             background: #1557b0;
         }
 
-        .login-right .divider {
+        .login-right .divider, .register-right .divider {
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -216,31 +216,19 @@
             margin: 1rem 0;
         }
 
-        .login-right .divider hr {
+        .login-right .divider hr, .register-right .divider hr {
             flex: 1;
             border: none;
             border-top: 1px solid #cccccc;
         }
 
-        .login-right a {
+        .login-right a, .register-right a {
             color: #a0d995;
             text-decoration: none;
         }
 
-        .login-right a:hover {
+        .login-right a:hover, .register-right a:hover {
             text-decoration: underline;
-        }
-
-        .terms-text {
-            font-size: 0.9rem;
-            color: #cccccc;
-            text-align: center;
-            max-width: 300px;
-            margin-top: 1rem;
-        }
-
-        .terms-text a {
-            color: #a0d995;
         }
 
         /* Profile Content (Hidden Initially) */
@@ -249,6 +237,7 @@
             margin: 0 auto;
             text-align: center;
             display: none;
+            padding-top: 2rem;
         }
 
         .profile-content h1 {
@@ -257,9 +246,62 @@
             margin-bottom: 1rem;
         }
 
-        .profile-content p {
-            font-size: 1.2rem;
-            color: #cccccc;
+        .profile-picture-container {
+            margin-bottom: 2rem;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #a0d995;
+            margin-bottom: 1rem;
+        }
+
+        .upload-picture-btn, .edit-profile-btn, .sign-out-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #1a73e8;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 0.5rem;
+        }
+
+        .upload-picture-btn:hover, .edit-profile-btn:hover, .sign-out-btn:hover {
+            background: #1557b0;
+        }
+
+        .edit-profile-form {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 300px;
+            margin: 1rem auto;
+        }
+
+        .edit-profile-form input {
+            padding: 0.5rem;
+            border: 1px solid #a0d995;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+        }
+
+        .edit-profile-form button {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #1a73e8;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .edit-profile-form button:hover {
+            background: #1557b0;
         }
 
         footer {
@@ -374,27 +416,36 @@
                 padding: 0 1rem 1rem;
             }
 
-            .login-container {
+            .login-container, .register-container {
                 flex-direction: column;
                 min-height: calc(100vh - 120px);
             }
 
-            .login-left, .login-right {
+            .login-left, .login-right, .register-left, .register-right {
                 flex: none;
                 width: 100%;
             }
 
-            .login-left img {
+            .login-left img, .register-left img {
                 width: 80%;
                 max-height: 200px;
             }
 
-            .login-right {
+            .login-right, .register-right {
                 padding: 1rem;
             }
 
-            .login-right h2 {
+            .login-right h2, .register-right h2 {
                 font-size: 1.5rem;
+            }
+
+            .profile-content h1 {
+                font-size: 2rem;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
             }
 
             footer {
@@ -438,8 +489,17 @@
         }
 
         @media (max-width: 480px) {
-            .login-right h2 {
+            .login-right h2, .register-right h2 {
                 font-size: 1.2rem;
+            }
+
+            .profile-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .profile-picture {
+                width: 100px;
+                height: 100px;
             }
 
             .footer-title {
@@ -467,133 +527,67 @@
                     <img src="/DOATOONs-/Logos/Official.png" alt="DOATOONS Logo">
                 </div>
                 <div class="login-right">
-                    <h2>Sign Up</h2>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="password" id="password" placeholder="Password" required>
-                    <button class="create-account" onclick="createAccount()">Create account</button>
+                    <h2>Log In</h2>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <button class="login-btn" onclick="signIn()">Log In</button>
                     <div class="divider">
                         <hr>or<hr>
                     </div>
                     <button class="social-login-btn google" onclick="signInWithGoogle()">
                         <img src="/DOATOONs-/Logos/google-icon.png" alt="Google Icon">
-                        Sign up with Google
+                        Log in with Google
                     </button>
-                    <p>Already have an account? <a href="#" onclick="signIn()">Sign in</a></p>
+                    <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Overlay -->
+        <div class="register-overlay" id="registerOverlay" style="display: none;">
+            <div class="register-container">
+                <div class="register-left">
+                    <img src="/DOATOONs-/Logos/Official.png" alt="DOATOONS Logo">
+                </div>
+                <div class="register-right">
+                    <h2>Register</h2>
+                    <input type="text" id="firstName" placeholder="First Name" required>
+                    <input type="text" id="middleName" placeholder="Middle Name (Optional)">
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                    <input type="email" id="registerEmail" placeholder="Email" required>
+                    <input type="password" id="registerPassword" placeholder="Password" required>
+                    <button class="create-account" onclick="createAccount()">Create Account</button>
+                    <p>Already have an account? <a href="#" onclick="showLogin()">Log In</a></p>
                 </div>
             </div>
         </div>
 
         <!-- Profile Content (Hidden Initially) -->
         <div class="profile-content" id="profileContent">
-            <h1>Welcome to Your Profile</h1>
-            <p>This is your personal profile page. Here you can manage your account, view your activity, and more.</p>
-            <button onclick="signOut()">Sign Out</button>
+            <div class="profile-picture-container">
+                <img id="profilePicture" class="profile-picture" src="https://via.placeholder.com/150?text=Profile" alt="Profile Picture">
+                <div>
+                    <input type="file" id="profilePictureInput" accept="image/*" style="display: none;" onchange="uploadProfilePicture()">
+                    <button class="upload-picture-btn" onclick="document.getElementById('profilePictureInput').click()">Upload New Picture</button>
+                </div>
+            </div>
+            <h1 id="userFullName">Welcome</h1>
+            <button class="edit-profile-btn" onclick="showEditProfileForm()">Edit Profile</button>
+            <div class="edit-profile-form" id="editProfileForm">
+                <input type="text" id="editFirstName" placeholder="First Name" required>
+                <input type="text" id="editMiddleName" placeholder="Middle Name (Optional)">
+                <input type="text" id="editLastName" placeholder="Last Name" required>
+                <button onclick="updateProfile()">Save Changes</button>
+                <button onclick="cancelEditProfile()">Cancel</button>
+            </div>
+            <button class="sign-out-btn" onclick="signOut()">Sign Out</button>
         </div>
     </div>
 
     <div id="footer-placeholder"></div>
 
-    <!-- Firebase SDK (Modular) -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBj8HeVOqquJd49bgp7TrZPg_FRJBDeiBg",
-            authDomain: "doatoons.firebaseapp.com",
-            projectId: "doatoons",
-            storageBucket: "doatoons.firebasestorage.app",
-            messagingSenderId: "778176872877",
-            appId: "1:778176872877:web:7a1df7dd1c6f486277a124",
-            measurementId: "G-DLS73GX39L"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // Check login state on page load
-        let isLoggedIn = false;
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                isLoggedIn = true;
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('profileContent').style.display = 'block';
-            } else {
-                isLoggedIn = false;
-                document.getElementById('loginOverlay').style.display = 'flex';
-                document.getElementById('profileContent').style.display = 'none';
-            }
-        });
-
-        // Create account with email/password
-        window.createAccount = function() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            if (email && password) {
-                createUserWithEmailAndPassword(auth, email, password)
-                    .then(userCredential => {
-                        isLoggedIn = true;
-                        document.getElementById('loginOverlay').style.display = 'none';
-                        document.getElementById('profileContent').style.display = 'block';
-                    })
-                    .catch(error => {
-                        alert(error.message);
-                    });
-            } else {
-                alert('Please enter both email and password.');
-            }
-        };
-
-        // Sign in with Google
-        window.signInWithGoogle = function() {
-            const provider = new GoogleAuthProvider();
-            signInWithPopup(auth, provider)
-                .then(result => {
-                    isLoggedIn = true;
-                    document.getElementById('loginOverlay').style.display = 'none';
-                    document.getElementById('profileContent').style.display = 'block';
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        };
-
-        // Sign in (for existing account)
-        window.signIn = function() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            if (email && password) {
-                signInWithEmailAndPassword(auth, email, password)
-                    .then(userCredential => {
-                        isLoggedIn = true;
-                        document.getElementById('loginOverlay').style.display = 'none';
-                        document.getElementById('profileContent').style.display = 'block';
-                    })
-                    .catch(error => {
-                        alert(error.message);
-                    });
-            } else {
-                alert('Please enter both email and password.');
-            }
-        };
-
-        // Sign out
-        window.signOut = function() {
-            signOut(auth)
-                .then(() => {
-                    isLoggedIn = false;
-                    document.getElementById('loginOverlay').style.display = 'flex';
-                    document.getElementById('profileContent').style.display = 'none';
-                })
-                .catch(error => {
-                    alert(error.message);
-                });
-        };
-    </script>
-
+    <!-- Link to external scripts -->
     <script src="/DOATOONs-/scripts.js"></script>
+    <script type="module" src="/DOATOONs-/profile/scripts.js"></script>
 </body>
 </html>
