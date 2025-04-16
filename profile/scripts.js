@@ -108,7 +108,7 @@ window.signInWithGoogle = function() {
             isLoggedIn = true;
             // Redirect based on email domain
             if (user.email && user.email.endsWith('@doatoons.com')) {
-                window.location.href = '/DOATOONs-/profile/admin/';
+                window.location.href = '/DOATOONs-/profile/admin/public';
             }
         })
         .catch(error => {
@@ -118,7 +118,7 @@ window.signInWithGoogle = function() {
 
 // Sign in with DOATOONs (redirect to admin page)
 window.signInWithDoatoons = function() {
-    window.location.href = '/DOATOONs-/profile/admin/';
+    window.location.href = '/DOATOONs-/profile/admin/public';
 };
 
 // Sign in (for existing account)
