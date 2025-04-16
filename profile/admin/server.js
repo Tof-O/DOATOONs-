@@ -11,7 +11,7 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(session({
-    secret:'9f23a8d57c2d4fa109b4ecab1f85d7d3a02e1d9865d3cc1aa9a3b681cde59b02'
+    secret:'9f23a8d57c2d4fa109b4ecab1f85d7d3a02e1d9865d3cc1aa9a3b681cde59b02',
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false } // Set to true in production with HTTPS
