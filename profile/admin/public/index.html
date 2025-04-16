@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .page-content {
+            padding: 2rem;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Admin Login Overlay */
+        .admin-login-overlay {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+        }
+
+        .admin-login-container {
+            display: flex;
+            width: 100%;
+            min-height: calc(100vh - 120px);
+        }
+
+        .admin-login-left, .admin-login-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-login-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .admin-login-right {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .admin-login-right h2 {
+            font-size: 2rem;
+            color: #a0d995;
+            margin-bottom: 1rem;
+        }
+
+        .admin-login-right input {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #a0d995;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+        }
+
+        .admin-login-right button {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .admin-login-right button.login-btn {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .admin-login-right button.login-btn:hover {
+            background: #1557b0;
+        }
+
+        /* Admin Dashboard (Visible after login) */
+        .admin-dashboard {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            display: none;
+            padding-top: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .admin-picture-container {
+            margin-bottom: 1rem;
+        }
+
+        .admin-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #a0d995;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-email {
+            font-size: 1rem;
+            color: #a0d995;
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-section {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .admin-section h2 {
+            font-size: 1.5rem;
+            color: #a0d995;
+            margin-bottom: 1rem;
+        }
+
+        .admin-section p {
+            font-size: 1rem;
+            color: #cccccc;
+        }
+
+        .sign-out-btn {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #1a73e8;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .sign-out-btn:hover {
+            background: #1557b0;
+        }
+
+        @media (max-width: 768px) {
+            .page-content {
+                padding: 1rem;
+            }
+
+            .admin-login-container {
+                flex-direction: column;
+                min-height: calc(100vh - 80px);
+            }
+
+            .admin-login-left, .admin-login-right {
+                flex: none;
+                width: 100%;
+            }
+
+            .admin-login-left img {
+                width: 80%;
+                max-height: 200px;
+            }
+
+            .admin-login-right {
+                padding: 1rem;
+            }
+
+            .admin-login-right h2 {
+                font-size: 1.5rem;
+            }
+
+            .admin-dashboard {
+                padding: 1rem;
+            }
+
+            .admin-name {
+                font-size: 1.5rem;
+            }
+
+            .admin-picture {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-login-right h2 {
+                font-size: 1.2rem;
+            }
+
+            .admin-name {
+                font-size: 1.2rem;
+            }
+
+            .admin-email {
+                font-size: 0.9rem;
+            }
+
+            .admin-section h2 {
+                font-size: 1.2rem;
+            }
+
+            .admin-section p {
+                font-size: 0.9rem;
+            }
+
+            .admin-picture {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-content">
+        <!-- Admin Login Overlay -->
+        <div class="admin-login-overlay" id="adminLoginOverlay">
+            <div class="admin-login-container">
+                <div class="admin-login-left">
+                    <img src="/assets/Logos/Official.png" alt="DOATOONS Logo">
+                </div>
+                <div class="admin-login-right">
+                    <h2>Admin Login</h2>
+                    <input type="email" id="adminEmail" placeholder="Email (e.g., user@doatoons.com)" required>
+                    <input type="password" id="adminPassword" placeholder="Password" required>
+                    <input type="text" id="adminRegNumber" placeholder="Registration Number" required>
+                    <button class="login-btn" onclick="adminSignIn()">Log In</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard (Visible after login) -->
+        <div class="admin-dashboard" id="adminDashboard">
+            <div class="admin-picture-container">
+                <img id="adminPicture" class="admin-picture" src="https://via.placeholder.com/120?text=Admin" alt="Admin Picture">
+            </div>
+            <div class="admin-name" id="adminFullName">Welcome, Admin</div>
+            <div class="admin-email" id="adminEmailDisplay"></div>
+            <div class="admin-section">
+                <h2>Admin Dashboard</h2>
+                <p id="adminAccessLevel">Access Level: </p>
+                <!-- Add more admin-specific content here based on access level -->
+            </div>
+            <button class="sign-out-btn" onclick="adminSignOut()">Sign Out</button>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Client-side JavaScript -->
+    <script>
+        // Check session on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/session')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAdminDashboard(data.user);
+                    } else {
+                        document.getElementById('adminLoginOverlay').style.display = 'flex';
+                        document.getElementById('adminDashboard').style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking session:', error);
+                    document.getElementById('adminLoginOverlay').style.display = 'flex';
+                    document.getElementById('adminDashboard').style.display = 'none';
+                });
+        });
+
+        // Admin sign-in
+        window.adminSignIn = function() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            const registration_number = document.getElementById('adminRegNumber').value;
+
+            if (!email || !password || !registration_number) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, registration_number })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAdminDashboard({ email, full_name: data.full_name, access_level: data.access_level });
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during login:', error);
+                    alert('An error occurred during login.');
+                });
+        };
+
+        // Show admin dashboard
+        function showAdminDashboard(user) {
+            document.getElementById('adminLoginOverlay').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            document.getElementById('adminFullName').textContent = user.full_name || 'Admin';
+            document.getElementById('adminEmailDisplay').textContent = user.email || '';
+            document.getElementById('adminAccessLevel').textContent = `Access Level: ${user.access_level === 2 ? 'Super Admin' : 'Basic Admin'}`;
+            // Add more admin-specific content based on access_level if needed
+        }
+
+        // Admin sign-out
+        window.adminSignOut = function() {
+            fetch('/api/logout', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('adminLoginOverlay').style.display = 'flex';
+                        document.getElementById('adminDashboard').style.display = 'none';
+                    } else {
+                        alert('Error signing out.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                    alert('An error occurred during logout.');
+                });
+        };
+    </script>
+</body>
+</html>
