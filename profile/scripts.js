@@ -116,6 +116,11 @@ window.signInWithGoogle = function() {
         });
 };
 
+// Sign in with DOATOONs (redirect to admin page)
+window.signInWithDoatoons = function() {
+    window.location.href = '/DOATOONs-/profile/admin/';
+};
+
 // Sign in (for existing account)
 window.signIn = function() {
     const email = document.getElementById('loginEmail').value;
