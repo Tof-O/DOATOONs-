@@ -12,7 +12,6 @@
             font-family: Arial, sans-serif;
         }
         
-
         body {
             background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
             color: white;
@@ -334,55 +333,27 @@
     <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1>Animations</h1>
+        <h1 id="pageTitle"></h1>
         <div class="animations-container">
             <!-- 2D Animations Section -->
             <div class="animation-section">
-                <h2>2D Animations</h2>
+                <h2 id="twoDSectionTitle"></h2>
                 <div class="main-animation">
-                    <img src="/DOATOONs-/Images/Animation 2d.jpg" alt="2D Animation Main" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=2D+Animation';">
+                    <img id="twoDMainImage" alt="2D Animation Main" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=2D+Animation';">
                 </div>
-                <div class="sub-gallery">
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/Eye.png" alt="Hand Drawn" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Hand+Drawn';">
-                        <p><a href="hand-drawn.html">Hand Drawn</a></p>
-                        <p>2D Animations</p>
-                    </div>
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/Sprite.png" alt="Sprite Sheet" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Sprite+Sheet';">
-                        <p><a href="sprite-sheet.html">Sprite Sheet</a></p>
-                        <p>2D Animations</p>
-                    </div>
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/Iron man.png" alt="Stickman" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Stickman';">
-                        <p><a href="stickman.html">Stickman</a></p>
-                        <p>2D Animations</p>
-                    </div>
+                <div class="sub-gallery" id="twoDSubGallery">
+                    <!-- Sub-gallery items will be dynamically inserted -->
                 </div>
             </div>
 
             <!-- 3D Animations Section -->
             <div class="animation-section">
-                <h2>3D Animations</h2>
+                <h2 id="threeDSectionTitle"></h2>
                 <div class="main-animation">
-                    <img src="/DOATOONs-/Images/percey.png" alt="3D Animation Main" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=3D+Animation';">
+                    <img id="threeDMainImage" alt="3D Animation Main" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x200?text=3D+Animation';">
                 </div>
-                <div class="sub-gallery">
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/percey.png" alt="Coming Soon 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Coming+Soon';">
-                        <p><a href="3d-animations">Coming Soon</a></p>
-                        <p>3D Animations</p>
-                    </div>
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/arms2.png" alt="Coming Soon 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Coming+Soon';">
-                        <p><a href="3d-animations">Coming Soon</a></p>
-                        <p>3D Animations</p>
-                    </div>
-                    <div class="sub-gallery-item">
-                        <img src="/DOATOONs-/Images/arms.png" alt="Coming Soon 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=Coming+Soon';">
-                        <p><a href="3d-animations">Coming Soon</a></p>
-                        <p>3D Animations</p>
-                    </div>
+                <div class="sub-gallery" id="threeDSubGallery">
+                    <!-- Sub-gallery items will be dynamically inserted -->
                 </div>
             </div>
         </div>
@@ -391,5 +362,57 @@
     <div id="footer-placeholder"></div>
 
     <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/animations/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+
+                // Update 2D Animations section
+                document.getElementById('twoDSectionTitle').textContent = data.twoDSectionTitle;
+                document.getElementById('twoDMainImage').src = data.twoDMainImage;
+
+                // Populate 2D sub-gallery
+                const twoDSubGallery = document.getElementById('twoDSubGallery');
+                data.twoDSubGallery.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'sub-gallery-item';
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=${item.title.replace(/ /g, '+')}';">
+                        <p><a href="${item.link}">${item.title}</a></p>
+                        <p>${item.subtitle}</p>
+                    `;
+                    twoDSubGallery.appendChild(div);
+                });
+
+                // Update 3D Animations section
+                document.getElementById('threeDSectionTitle').textContent = data.threeDSectionTitle;
+                document.getElementById('threeDMainImage').src = data.threeDMainImage;
+
+                // Populate 3D sub-gallery
+                const threeDSubGallery = document.getElementById('threeDSubGallery');
+                data.threeDSubGallery.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'sub-gallery-item';
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=${item.title.replace(/ /g, '+')}';">
+                        <p><a href="${item.link}">${item.title}</a></p>
+                        <p>${item.subtitle}</p>
+                    `;
+                    threeDSubGallery.appendChild(div);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                document.getElementById('pageTitle').textContent = "Animations";
+                document.getElementById('twoDSectionTitle').textContent = "2D Animations";
+                document.getElementById('twoDMainImage').src = "/DOATOONs-/Images/Animation 2d.jpg";
+                document.getElementById('threeDSectionTitle').textContent = "3D Animations";
+                document.getElementById('threeDMainImage').src = "/DOATOONs-/Images/percey.png";
+            });
+    </script>
 </body>
 </html>
