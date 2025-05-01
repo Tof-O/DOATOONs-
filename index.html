@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -172,18 +171,24 @@
                 <img src="/DOATOONs-/Logos/Doatoons.png" alt="DOATOONS Banner" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x200?text=Banner';">
             </div>
             <h1>DOATOONs</h1>
-            <p class="welcome-text">Welcome to our animation website! Explore a world of imagination and storytelling through our collection of animated content, from classic hand-drawn animation to cutting-edge 3D graphics. Join us on a journey through the fascinating art of animation.</p>
+            <p class="welcome-text" id="introParagraph"></p>
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="/DOATOONs-/Images/Iron man.png" alt="Iron Man" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Iron+Man';">
+                    <a href="/DOATOONs-/animations">
+                        <img id="animationsPicture" alt="Animations" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Animations';">
+                    </a>
                     <a href="/DOATOONs-/animations">Animations</a>
                 </div>
                 <div class="gallery-item">
-                    <img src="/DOATOONs-/Images/Goku.png" alt="Goku" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku';">
+                    <a href="/DOATOONs-/visual-effects">
+                        <img id="visualEffectsPicture" alt="Visual-Effects" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Visual+Effects';">
+                    </a>
                     <a href="/DOATOONs-/visual-effects">Visual Effects</a>
                 </div>
                 <div class="gallery-item">
-                    <img src="/DOATOONs-/Images/Ring of Fire 2.png" alt="Ring of Fire" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Ring+of+Fire';">
+                    <a href="/DOATOONs-/designs">
+                        <img id="designsPicture" alt="Designs" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Designs';">
+                    </a>
                     <a href="/DOATOONs-/designs">Designs</a>
                 </div>
             </div>
@@ -192,5 +197,28 @@
 
     <div id="footer-placeholder"></div>
     <script src="/DOATOONs-/scripts.js"></script>
+
+    <script>
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/home/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update the welcome paragraph
+                document.getElementById('introParagraph').textContent = data.introParagraph;
+
+                // Update the image sources
+                document.getElementById('animationsPicture').src = data.animationsPicture;
+                document.getElementById('visualEffectsPicture').src = data.visualEffectsPicture;
+                document.getElementById('designsPicture').src = data.designsPicture;
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                document.getElementById('introParagraph').textContent = "Welcome to our animation website! Explore a world of imagination and storytelling through our collection of animated content, from classic hand-drawn animation to cutting-edge 3D graphics. Join us on a journey through the fascinating art of animation.";
+                document.getElementById('animationsPicture').src = "/DOATOONs-/Images/Iron man.png";
+                document.getElementById('visualEffectsPicture').src = "/DOATOONs-/Images/Goku.png";
+                document.getElementById('designsPicture').src = "/DOATOONs-/Images/Ring of Fire 2.png";
+            });
+    </script>
 </body>
 </html>
