@@ -1,0 +1,47 @@
+{
+    "pageTitle": "Animations",
+    "twoDSectionTitle": "2D Animations",
+    "twoDMainImage": "/DOATOONs-/Images/Animation 2d.jpg",
+    "twoDSubGallery": [
+        {
+            "image": "/DOATOONs-/Images/Eye.png",
+            "title": "Hand Drawn",
+            "link": "hand-drawn.html",
+            "subtitle": "2D Animations"
+        },
+        {
+            "image": "/DOATOONs-/Images/Sprite.png",
+            "title": "Sprite Sheet",
+            "link": "sprite-sheet.html",
+            "subtitle": "2D Animations"
+        },
+        {
+            "image": "/DOATOONs-/Images/Iron man.png",
+            "title": "Stickman",
+            "link": "stickman.html",
+            "subtitle": "2D Animations"
+        }
+    ],
+    "threeDSectionTitle": "3D Animations",
+    "threeDMainImage": "/DOATOONs-/Images/percey.png",
+    "threeDSubGallery": [
+        {
+            "image": "/DOATOONs-/Images/percey.png",
+            "title": "Coming Soon",
+            "link": "3d-animations",
+            "subtitle": "3D Animations"
+        },
+        {
+            "image": "/DOATOONs-/Images/arms2.png",
+            "title": "Coming Soon",
+            "link": "3d-animations",
+            "subtitle": "3D Animations"
+        },
+        {
+            "image": "/DOATOONs-/Images/arms.png",
+            "title": "Coming Soon",
+            "link": "3d-animations",
+            "subtitle": "3D Animations"
+        }
+    ]
+}
