@@ -287,14 +287,8 @@
     <div class="page-content">
         <h1>Visual Effects</h1>
         <div class="scrolling-gallery">
-            <div class="gallery-track">
-                <img src="/DOATOONs-/Images/Goku.png" alt="Goku" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku';">
-                <img src="/DOATOONs-/Images/Goku ssj2.png" alt="Goku SSJ2" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Goku+SSJ2';">
-                <img src="/DOATOONs-/Images/Super Sonic.png" alt="Super Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Super+Sonic';">
-                <img src="/DOATOONs-/Images/Super evil sonic.png" alt="Super Evil Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Super+Evil+Sonic';">
-                <img src="/DOATOONs-/Images/SSJ god.png" alt="SSJ god" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=SSJ+god';">
-                <img src="/DOATOONs-/Images/Sonic.png" alt="Sonic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Sonic';">
-                <img src="/DOATOONs-/Logos/DOATOONs Epic.png" alt="Epic" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=DOATOONs+Epic';">
+            <div class="gallery-track" id="galleryTrack">
+                <!-- Images will be dynamically inserted -->
             </div>
         </div>
         <!-- Full-screen image overlay -->
@@ -308,49 +302,119 @@
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
-        // Infinite scroll logic
-        const galleryTrack = document.querySelector('.gallery-track');
-        const images = Array.from(galleryTrack.querySelectorAll('img'));
-        const imageWidth = 220; // Image width (200px) + margin (10px + 10px)
-        const scrollSpeed = 1; // Pixels per frame, adjust for speed
-        let position = 0;
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/visual-effects/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                const galleryTrack = document.getElementById('galleryTrack');
+                const imageWidth = 220; // Image width (200px) + margin (10px + 10px)
+                let position = 0;
+                let scrollSpeed = 1; // Pixels per frame, adjust for speed
 
-        // Set initial width (not strictly necessary but good for clarity)
-        galleryTrack.style.width = `${images.length * imageWidth}px`;
+                // Dynamically create gallery images
+                data.galleryImages.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = src.split('/').pop().split('.')[0].replace(/[^a-zA-Z0-9]/g, ' ');
+                    img.onerror = () => { img.onerror = null; img.src = `https://via.placeholder.com/200x200?text=${img.alt.replace(/ /g, '+')}`; };
+                    galleryTrack.appendChild(img);
+                });
 
-        function updateScroll() {
-            position -= scrollSpeed; // Move left
-            galleryTrack.style.transform = `translateX(${position}px)`;
+                const images = Array.from(galleryTrack.querySelectorAll('img'));
+                galleryTrack.style.width = `${images.length * imageWidth}px`;
 
-            // Check if the first image has scrolled off-screen
-            if (Math.abs(position) >= imageWidth) {
-                position += imageWidth; // Adjust position
-                const firstImage = galleryTrack.firstElementChild;
-                galleryTrack.appendChild(firstImage); // Move first image to end
-                galleryTrack.style.transform = `translateX(${position}px)`; // Reset transform to avoid jump
-            }
+                function updateScroll() {
+                    position -= scrollSpeed;
+                    galleryTrack.style.transform = `translateX(${position}px)`;
 
-            requestAnimationFrame(updateScroll); // Keep looping
-        }
+                    if (Math.abs(position) >= imageWidth) {
+                        position += imageWidth;
+                        const firstImage = galleryTrack.firstElementChild;
+                        galleryTrack.appendChild(firstImage);
+                        galleryTrack.style.transform = `translateX(${position}px)`;
+                    }
 
-        // Start the scroll
-        requestAnimationFrame(updateScroll);
+                    requestAnimationFrame(updateScroll);
+                }
 
-        // Image click to open overlay
-        const overlay = document.getElementById('imageOverlay');
-        const overlayImage = document.getElementById('overlayImage');
-        const closeOverlay = document.getElementById('closeOverlay');
+                requestAnimationFrame(updateScroll);
 
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                overlayImage.src = img.src;
-                overlay.style.display = 'flex';
+                // Image click to open overlay
+                const overlay = document.getElementById('imageOverlay');
+                const overlayImage = document.getElementById('overlayImage');
+                const closeOverlay = document.getElementById('closeOverlay');
+
+                images.forEach(img => {
+                    img.addEventListener('click', () => {
+                        overlayImage.src = img.src;
+                        overlay.style.display = 'flex';
+                    });
+                });
+
+                closeOverlay.addEventListener('click', () => {
+                    overlay.style.display = 'none';
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                const galleryTrack = document.getElementById('galleryTrack');
+                const defaultImages = [
+                    "/DOATOONs-/Images/Goku.png",
+                    "/DOATOONs-/Images/Goku ssj2.png",
+                    "/DOATOONs-/Images/Super Sonic.png",
+                    "/DOATOONs-/Images/Super evil sonic.png",
+                    "/DOATOONs-/Images/SSJ god.png",
+                    "/DOATOONs-/Images/Sonic.png",
+                    "/DOATOONs-/Logos/DOATOONs Epic.png"
+                ];
+                const imageWidth = 220;
+                let position = 0;
+                let scrollSpeed = 1;
+
+                defaultImages.forEach((src, index) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = src.split('/').pop().split('.')[0].replace(/[^a-zA-Z0-9]/g, ' ');
+                    img.onerror = () => { img.onerror = null; img.src = `https://via.placeholder.com/200x200?text=${img.alt.replace(/ /g, '+')}`; };
+                    galleryTrack.appendChild(img);
+                });
+
+                const images = Array.from(galleryTrack.querySelectorAll('img'));
+                galleryTrack.style.width = `${images.length * imageWidth}px`;
+
+                function updateScroll() {
+                    position -= scrollSpeed;
+                    galleryTrack.style.transform = `translateX(${position}px)`;
+
+                    if (Math.abs(position) >= imageWidth) {
+                        position += imageWidth;
+                        const firstImage = galleryTrack.firstElementChild;
+                        galleryTrack.appendChild(firstImage);
+                        galleryTrack.style.transform = `translateX(${position}px)`;
+                    }
+
+                    requestAnimationFrame(updateScroll);
+                }
+
+                requestAnimationFrame(updateScroll);
+
+                // Image click to open overlay
+                const overlay = document.getElementById('imageOverlay');
+                const overlayImage = document.getElementById('overlayImage');
+                const closeOverlay = document.getElementById('closeOverlay');
+
+                images.forEach(img => {
+                    img.addEventListener('click', () => {
+                        overlayImage.src = img.src;
+                        overlay.style.display = 'flex';
+                    });
+                });
+
+                closeOverlay.addEventListener('click', () => {
+                    overlay.style.display = 'none';
+                });
             });
-        });
-
-        closeOverlay.addEventListener('click', () => {
-            overlay.style.display = 'none';
-        });
     </script>
 </body>
 </html>
