@@ -281,66 +281,90 @@
     <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1>Digital Renderings</h1>
-
-        <!-- 01 (Image Left, Text Right) -->
-        <div class="service-section">
-            <img src="/DOATOONs-/Logos/Official.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
-            <div class="service-text">
-                <h3>DOATOONs Official Logo</h3>
-                <p>xyz1</p>
-            </div>
-        </div>
-
-        <!-- 02 (Image Right, Text Left) -->
-        <div class="service-section reverse">
-            <img src="/DOATOONs-/Logos/DOATOONs Epic.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
-            <div class="service-text">
-                <h3>DOATOONs Epic Logo</h3>
-                <p>xyz1</p>
-            </div>
-        </div>
-
-        <!-- 03 (Image Left, Text Right) -->
-        <div class="service-section">
-            <img src="/DOATOONs-/Images/dr strange.png" alt="Rendering 01" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+01';">
-            <div class="service-text">
-                <h3>Doctor Strange</h3>
-                <p>xyz1</p>
-            </div>
-        </div>
-
-        <!-- 04 (Image Right, Text Left) -->
-        <div class="service-section reverse">
-            <img src="/DOATOONs-/Images/eye.png" alt="Rendering 02" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+02';">
-            <div class="service-text">
-                <h3>The Blue Eye</h3>
-                <p>xyz1</p>
-            </div>
-        </div>
-
-        <!-- 05 (Image Left, Text Right) -->
-        <div class="service-section">
-            <img src="/DOATOONs-/Images/Ring of fire 2.png" alt="Rendering 03" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+03';">
-            <div class="service-text">
-                <h3>The Ring of Fire</h3>
-                <p>xyz1</p>
-            </div>
-        </div>
-
-        <!-- 06 (Image Right, Text Left) -->
-        <div class="service-section reverse">
-            <img src="/DOATOONs-/Images/Spongebob's house.png" alt="Rendering 04" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Rendering+04';">
-            <div class="service-text">
-                <h3>Spongebob's House Transformation</h3>
-                <p>xyz1</p>
-            </div>
+        <h1 id="pageTitle"></h1>
+        <div id="galleryContainer">
+            <!-- Gallery items will be dynamically inserted -->
         </div>
     </div>
 
    <div id="footer-placeholder"></div>
 
-
     <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/designs/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+
+                // Dynamically generate gallery sections
+                const galleryContainer = document.getElementById('galleryContainer');
+                data.galleryItems.forEach((item, index) => {
+                    const isReverse = index % 2 === 1; // Alternate layout
+                    const section = document.createElement('div');
+                    section.className = `service-section ${isReverse ? 'reverse' : ''}`;
+                    section.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=${item.title.replace(/ /g, '+')}';">
+                        <div class="service-text">
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(section);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                document.getElementById('pageTitle').textContent = "Digital Renderings";
+                const galleryContainer = document.getElementById('galleryContainer');
+                const defaultItems = [
+                    {
+                        "image": "/DOATOONs-/Logos/Official.png",
+                        "title": "DOATOONs Official Logo",
+                        "description": "xyz1"
+                    },
+                    {
+                        "image": "/DOATOONs-/Logos/DOATOONs Epic.png",
+                        "title": "DOATOONs Epic Logo",
+                        "description": "xyz1"
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/dr strange.png",
+                        "title": "Doctor Strange",
+                        "description": "xyz1"
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/eye.png",
+                        "title": "The Blue Eye",
+                        "description": "xyz1"
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/Ring of fire 2.png",
+                        "title": "The Ring of Fire",
+                        "description": "xyz1"
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/Spongebob's house.png",
+                        "title": "Spongebob's House Transformation",
+                        "description": "xyz1"
+                    }
+                ];
+                defaultItems.forEach((item, index) => {
+                    const isReverse = index % 2 === 1;
+                    const section = document.createElement('div');
+                    section.className = `service-section ${isReverse ? 'reverse' : ''}`;
+                    section.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=${item.title.replace(/ /g, '+')}';">
+                        <div class="service-text">
+                            <h3>${item.title}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(section);
+                });
+            });
+    </script>
 </body>
 </html>
