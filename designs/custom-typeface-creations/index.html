@@ -34,77 +34,6 @@
             height: 70px;
         }
 
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px solid white;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .cancel-icon {
-            position: absolute;
-            right: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #a0d995;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            transition: box-shadow 0.3s;
-        }
-
-        .contact-link:hover {
-            color: #a0d995;
-            box-shadow: 0 0 10px white;
-        }
-
-        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -118,7 +47,7 @@
         }
 
         .page-content {
-            padding: 0 2rem 2rem; /* Removed padding-top; it will be set dynamically by JavaScript */
+            padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
@@ -239,7 +168,6 @@
 
         /* Responsive Design for Mobile */
         @media (max-width: 768px) {
-            /* Adjust header for mobile */
             header {
                 padding: 1rem;
             }
@@ -248,33 +176,14 @@
                 height: 50px;
             }
 
-            .header-bottom {
-                flex-direction: row;
-                gap: 1rem;
-            }
-
-            .search-container {
-                flex: 1;
-            }
-
-            .search-bar {
-                width: 100%;
-            }
-
-            nav {
-                display: none;
-            }
-
             .hamburger {
                 display: block;
             }
 
-            /* Adjust page content */
             .page-content {
-                padding: 0 1rem 1rem; /* Removed padding-top; it will be set dynamically by JavaScript */
+                padding: 0 1rem 1rem;
             }
 
-            /* Adjust typeface header */
             .typeface-header {
                 flex-direction: column;
                 align-items: center;
@@ -298,7 +207,6 @@
                 font-size: 1rem;
             }
 
-            /* Stack typeface details vertically */
             .typeface-details {
                 flex-direction: column;
                 align-items: center;
@@ -327,13 +235,11 @@
                 font-size: 0.9rem;
             }
 
-            /* Adjust button */
             .get-yours-btn {
                 font-size: 1rem;
                 padding: 0.5rem 1rem;
             }
 
-            /* Adjust footer */
             footer {
                 padding: 1rem;
             }
@@ -343,7 +249,6 @@
             }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             .typeface-header h1 {
                 font-size: 1.5rem;
@@ -376,47 +281,12 @@
 
     <div class="page-content">
         <div class="typeface-content">
-            <div class="typeface-header">
-                <div class="title-container">
-                    <h1>BROWSE</h1>
-                    <h1><span>Custom Typeface Creations</span></h1>
-                </div>
-                <a href="/stylistic-accents.html" class="learn-more">Learn More</a>
+            <div class="typeface-header" id="typefaceHeader">
+                <!-- Title and learn more will be dynamically inserted -->
             </div>
-           
+            <div id="galleryContainer">
+                <!-- Gallery items will be dynamically inserted -->
             </div>
-            <div class="typeface-details" id="item-3">
-                <img src="/DOATOONs-/Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+3';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-            <div class="typeface-details reverse" id="item-4">
-                <img src="/DOATOONs-/Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+4';">
-                <div class="text-content">
-                    <h2>Elon Reeve Musk</h2>
-                    <h3>Theme:</h3>
-                    <h3>Neo - Modern</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary.</p>
-                </div>
-            </div>
-            <div class="typeface-details" id="item-5">
-                <img src="/DOATOONs-/Images/Jace Norman.png" alt="Jace Lee Norman Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Item+5';">
-                <div class="text-content">
-                    <h2>Jace Lee Norman</h2>
-                    <h3>Theme:</h3>
-                    <h3>Incomplete</h3>
-                    <p>Inspired by the idea:</p>
-                    <p>If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?</p>
-                </div>
-            </div>
-         
-            
             <a href="/typeface-order.html" class="get-yours-btn">Get Yours Now</a>
         </div>
     </div>
@@ -425,7 +295,88 @@
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
-        // Add script to dynamically adjust content margin based on header height
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/typeface-creations/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('typefaceHeader').innerHTML = `
+                    <div class="title-container">
+                        <h1>BROWSE</h1>
+                        <h1><span>${data.pageTitle}</span></h1>
+                    </div>
+                    <a href="/stylistic-accents.html" class="learn-more">Learn More</a>
+                `;
+
+                // Dynamically generate gallery sections
+                const galleryContainer = document.getElementById('galleryContainer');
+                data.galleryItems.forEach((item, index) => {
+                    const isReverse = index % 2 === 1; // Alternate layout
+                    const section = document.createElement('div');
+                    section.className = `typeface-details ${isReverse ? 'reverse' : ''}`;
+                    section.innerHTML = `
+                        <img src="${item.image}" alt="${item.title} Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=${item.title.replace(/ /g, '+')}';">
+                        <div class="text-content">
+                            <h2>${item.title}</h2>
+                            <h3>Theme:</h3>
+                            <h3>${item.theme}</h3>
+                            <p>Inspired by the idea:</p>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(section);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                document.getElementById('typefaceHeader').innerHTML = `
+                    <div class="title-container">
+                        <h1>BROWSE</h1>
+                        <h1><span>Custom Typeface Creations</span></h1>
+                    </div>
+                    <a href="/stylistic-accents.html" class="learn-more">Learn More</a>
+                `;
+                const galleryContainer = document.getElementById('galleryContainer');
+                const defaultItems = [
+                    {
+                        "image": "/DOATOONs-/Images/Jace Norman.png",
+                        "title": "Jace Lee Norman",
+                        "theme": "Incomplete",
+                        "description": "Inspired by the idea: If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?"
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/Jace Norman.png",
+                        "title": "Elon Reeve Musk",
+                        "theme": "Neo - Modern",
+                        "description": "Inspired by the idea: The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary."
+                    },
+                    {
+                        "image": "/DOATOONs-/Images/Jace Norman.png",
+                        "title": "Jace Lee Norman",
+                        "theme": "Incomplete",
+                        "description": "Inspired by the idea: If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?"
+                    }
+                ];
+                defaultItems.forEach((item, index) => {
+                    const isReverse = index % 2 === 1;
+                    const section = document.createElement('div');
+                    section.className = `typeface-details ${isReverse ? 'reverse' : ''}`;
+                    section.innerHTML = `
+                        <img src="${item.image}" alt="${item.title} Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=${item.title.replace(/ /g, '+')}';">
+                        <div class="text-content">
+                            <h2>${item.title}</h2>
+                            <h3>Theme:</h3>
+                            <h3>${item.theme}</h3>
+                            <p>Inspired by the idea:</p>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(section);
+                });
+            });
+
+        // Adjust content margin based on header height
         window.addEventListener('load', () => {
             const header = document.querySelector('header');
             const pageContent = document.querySelector('.page-content');
