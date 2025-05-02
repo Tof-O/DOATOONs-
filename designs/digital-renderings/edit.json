@@ -1,0 +1,40 @@
+{
+    "pageTitle": "Digital Renderings",
+    "galleryItems": [
+        {
+            "image": "/DOATOONs-/Logos/Official.png",
+            "title": "DOATOONs Official Logo",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Logos/DOATOONs Epic.png",
+            "title": "DOATOONs Epic Logo",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Images/dr strange.png",
+            "title": "Doctor Strange",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Images/eye.png",
+            "title": "The Blue Eye",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Images/Ring of fire 2.png",
+            "title": "The Ring of Fire",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Images/Spongebob's house.png",
+            "title": "Spongebob's House Transformation",
+            "description": "xyz1"
+        },
+        {
+            "image": "/DOATOONs-/Images/NewRendering.png",
+            "title": "New Digital Rendering",
+            "description": "xyz1"
+        }
+    ]
+}
