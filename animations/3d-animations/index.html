@@ -91,13 +91,37 @@
     <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1>3D Animations - Coming Soon</h1>
-        <img src="/DOATOONs-/Images/arms.png" alt="Coming Soon" class="placeholder-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=Coming+Soon';">
-        <p class="coming-soon-text">We’re working on bringing you stunning 3D animations. Check back soon!</p>
+        <h1 id="pageTitle"></h1>
+        <img id="placeholderImage" alt="Coming Soon" class="placeholder-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=Coming+Soon';">
+        <p class="coming-soon-text" id="comingSoonText"></p>
     </div>
 
     <div id="footer-placeholder"></div>
 
     <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Fetch content from edit.json and update the page
+        fetch('/DOATOONs-/animations/3d-animations/edit.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title (also used in <title> tag)
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+                document.title = "DOATOONS - " + data.pageTitle;
+
+                // Update placeholder image
+                document.getElementById('placeholderImage').src = data.placeholderImage;
+
+                // Update coming soon text
+                document.getElementById('comingSoonText').textContent = data.comingSoonText;
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                // Fallback to default content if edit.json fails to load
+                document.getElementById('pageTitle').textContent = "3D Animations - Coming Soon";
+                document.title = "DOATOONS - 3D Animations (Coming Soon)";
+                document.getElementById('placeholderImage').src = "/DOATOONs-/Images/arms.png";
+                document.getElementById('comingSoonText').textContent = "We’re working on bringing you stunning 3D animations. Check back soon!";
+            });
+    </script>
 </body>
 </html>
