@@ -34,77 +34,6 @@
             height: 70px;
         }
 
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px solid white;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .cancel-icon {
-            position: absolute;
-            right: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #a0d995;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            transition: box-shadow 0.3s;
-        }
-
-        .contact-link:hover {
-            color: #a0d995;
-            box-shadow: 0 0 10px white;
-        }
-
-        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -118,7 +47,7 @@
         }
 
         .page-content {
-            padding: 0 2rem 2rem; /* No padding-top; it will be set dynamically by JavaScript */
+            padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
@@ -182,9 +111,7 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
-            /* Adjust header for mobile */
             header {
                 padding: 1rem;
             }
@@ -193,30 +120,12 @@
                 height: 50px;
             }
 
-            .header-bottom {
-                flex-direction: row;
-                gap: 1rem;
-            }
-
-            .search-container {
-                flex: 1;
-            }
-
-            .search-bar {
-                width: 100%;
-            }
-
-            nav {
-                display: none;
-            }
-
             .hamburger {
                 display: block;
             }
 
-            /* Adjust page content */
             .page-content {
-                padding: 0 1rem 1rem; /* No padding-top; it will be set dynamically by JavaScript */
+                padding: 0 1rem 1rem;
             }
 
             h1 {
@@ -256,7 +165,6 @@
             }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.5rem;
@@ -287,7 +195,7 @@
         </div>
     </div>
 
-   <div id="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
@@ -301,7 +209,7 @@
                 // Dynamically generate gallery sections
                 const galleryContainer = document.getElementById('galleryContainer');
                 data.galleryItems.forEach((item, index) => {
-                    const isReverse = index % 2 === 1; // Alternate layout
+                    const isReverse = index % 2 === 1; // First item (index 0) on left, then alternate
                     const section = document.createElement('div');
                     section.className = `service-section ${isReverse ? 'reverse' : ''}`;
                     section.innerHTML = `
@@ -316,54 +224,7 @@
             })
             .catch(error => {
                 console.error('Error loading edit.json:', error);
-                // Fallback to default content if edit.json fails to load
-                document.getElementById('pageTitle').textContent = "Digital Renderings";
-                const galleryContainer = document.getElementById('galleryContainer');
-                const defaultItems = [
-                    {
-                        "image": "/DOATOONs-/Logos/Official.png",
-                        "title": "DOATOONs Official Logo",
-                        "description": "xyz1"
-                    },
-                    {
-                        "image": "/DOATOONs-/Logos/DOATOONs Epic.png",
-                        "title": "DOATOONs Epic Logo",
-                        "description": "xyz1"
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/dr strange.png",
-                        "title": "Doctor Strange",
-                        "description": "xyz1"
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/eye.png",
-                        "title": "The Blue Eye",
-                        "description": "xyz1"
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/Ring of fire 2.png",
-                        "title": "The Ring of Fire",
-                        "description": "xyz1"
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/Spongebob's house.png",
-                        "title": "Spongebob's House Transformation",
-                        "description": "xyz1"
-                    }
-                ];
-                defaultItems.forEach((item, index) => {
-                    const isReverse = index % 2 === 1;
-                    const section = document.createElement('div');
-                    section.className = `service-section ${isReverse ? 'reverse' : ''}`;
-                    section.innerHTML = `
-                        <img src="${item.image}" alt="${item.title}" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=${item.title.replace(/ /g, '+')}';">
-                        <div class="service-text">
-                            <h3>${item.title}</h3>
-                            <p>${item.description}</p>
-                        </div>
-                    `;
-                    galleryContainer.appendChild(section);
-                });
+                document.getElementById('pageTitle').textContent = "Error Loading Digital Renderings";
             });
     </script>
 </body>
