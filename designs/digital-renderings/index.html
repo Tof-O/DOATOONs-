@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -201,7 +200,7 @@
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
         // Fetch content from edit.json and update the page
-        fetch('/DOATOONs-/designs/edit.json')
+        fetch('./edit.json')
             .then(response => response.json())
             .then(data => {
                 // Update page title
