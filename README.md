@@ -55,6 +55,7 @@ For production deployment:
 Deploy the backend on a server (e.g., a VPS).
 Enable HTTPS and set cookie.secure to true in server.js.
 Replace the session.secret with a secure value.
+
 Consider adding rate limiting and CSRF protection.
 
 Security Notes
