@@ -218,6 +218,7 @@
 
     <div class="page-content" style="margin-top: 100px;">
         <h1 id="pageTitle">Visual Effects</h1>
+        <h2 id="fallbackTitle" style="display: none; text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #a0d995, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Visual Effects</h2>
         <p class="intro-text">
             Welcome to our Visual Effects gallery! Dive into a world of stunning transformations and dynamic effects. Click on any image in the scrolling gallery below to view it in full-screen and explore the magic up close.
         </p>
@@ -246,12 +247,15 @@
             })
             .then(data => {
                 console.log('Fetched data:', data); // Log the fetched data
-                // Update page title
                 const pageTitle = document.getElementById('pageTitle');
+                const fallbackTitle = document.getElementById('fallbackTitle');
                 if (pageTitle) {
                     pageTitle.textContent = data.pageTitle;
+                } else if (fallbackTitle) {
+                    fallbackTitle.style.display = 'block';
+                    fallbackTitle.textContent = data.pageTitle;
                 } else {
-                    console.error('pageTitle element not found');
+                    console.error('Neither pageTitle nor fallbackTitle found');
                 }
 
                 const galleryTrack = document.getElementById('galleryTrack');
@@ -306,8 +310,12 @@
             .catch(error => {
                 console.error('Error loading edit.json:', error);
                 const pageTitle = document.getElementById('pageTitle');
+                const fallbackTitle = document.getElementById('fallbackTitle');
                 if (pageTitle) {
                     pageTitle.textContent = "Error Loading Visual Effects";
+                } else if (fallbackTitle) {
+                    fallbackTitle.style.display = 'block';
+                    fallbackTitle.textContent = "Error Loading Visual Effects";
                 } else {
                     console.error('pageTitle element not found in catch block');
                 }
