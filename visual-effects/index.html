@@ -49,6 +49,7 @@
         .page-content {
             padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
+            margin-top: 80px; /* Fallback margin to ensure content is below header */
         }
 
         h1 {
@@ -160,6 +161,7 @@
 
             .page-content {
                 padding: 0 1rem 1rem;
+                margin-top: 60px; /* Adjusted fallback for smaller screens */
             }
 
             h1 {
@@ -202,6 +204,10 @@
                 font-size: 1.5rem;
                 top: 15px;
                 right: 15px;
+            }
+
+            .page-content {
+                margin-top: 50px; /* Adjusted fallback for extra small screens */
             }
         }
     </style>
@@ -291,7 +297,7 @@
             });
 
         // Adjust content margin based on header height
-        window.addEventListener('load', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const header = document.querySelector('header');
             const pageContent = document.querySelector('.page-content');
             const headerHeight = header.offsetHeight;
