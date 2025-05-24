@@ -52,14 +52,14 @@
             margin-top: 100px; /* Fallback margin */
         }
 
-        h1 {
+        h1, h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(to right, #a0d995, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            visibility: visible; /* Ensure visibility */
+            visibility: visible;
         }
 
         .intro-text {
@@ -165,7 +165,7 @@
                 margin-top: 80px;
             }
 
-            h1 {
+            h1, h2 {
                 font-size: 2rem;
             }
 
@@ -188,7 +188,7 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
+            h1, h2 {
                 font-size: 1.5rem;
             }
 
@@ -237,6 +237,21 @@
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
+        // Ensure the title is preserved
+        function ensureTitle() {
+            let pageTitle = document.getElementById('pageTitle');
+            let fallbackTitle = document.getElementById('fallbackTitle');
+            if (!pageTitle && !fallbackTitle) {
+                const pageContent = document.querySelector('.page-content');
+                const newTitle = document.createElement('h1');
+                newTitle.id = 'pageTitle';
+                newTitle.textContent = 'Visual Effects';
+                pageContent.insertBefore(newTitle, pageContent.firstChild);
+                pageTitle = newTitle;
+            }
+            return { pageTitle, fallbackTitle };
+        }
+
         // Fetch content from edit.json and update the page
         fetch('./edit.json')
             .then(response => {
@@ -246,16 +261,15 @@
                 return response.json();
             })
             .then(data => {
-                console.log('Fetched data:', data); // Log the fetched data
-                const pageTitle = document.getElementById('pageTitle');
-                const fallbackTitle = document.getElementById('fallbackTitle');
-                if (pageTitle) {
+                console.log('Fetched data:', data);
+                const { pageTitle, fallbackTitle } = ensureTitle();
+                if (pageTitle && pageTitle.tagName.toLowerCase() === 'h1') {
                     pageTitle.textContent = data.pageTitle;
-                } else if (fallbackTitle) {
+                } else if (fallbackTitle && fallbackTitle.tagName.toLowerCase() === 'h2') {
                     fallbackTitle.style.display = 'block';
                     fallbackTitle.textContent = data.pageTitle;
                 } else {
-                    console.error('Neither pageTitle nor fallbackTitle found');
+                    console.error('Neither pageTitle nor fallbackTitle are valid elements');
                 }
 
                 const galleryTrack = document.getElementById('galleryTrack');
@@ -309,11 +323,10 @@
             })
             .catch(error => {
                 console.error('Error loading edit.json:', error);
-                const pageTitle = document.getElementById('pageTitle');
-                const fallbackTitle = document.getElementById('fallbackTitle');
-                if (pageTitle) {
+                const { pageTitle, fallbackTitle } = ensureTitle();
+                if (pageTitle && pageTitle.tagName.toLowerCase() === 'h1') {
                     pageTitle.textContent = "Error Loading Visual Effects";
-                } else if (fallbackTitle) {
+                } else if (fallbackTitle && fallbackTitle.tagName.toLowerCase() === 'h2') {
                     fallbackTitle.style.display = 'block';
                     fallbackTitle.textContent = "Error Loading Visual Effects";
                 } else {
