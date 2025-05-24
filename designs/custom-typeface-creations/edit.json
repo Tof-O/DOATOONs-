@@ -1,6 +1,12 @@
 {
     "pageTitle": "Custom Typeface Creations",
     "galleryItems": [
+         {
+            "image": "/DOATOONs-/Images/Jace Norman.png",
+            "title": "Testing",
+            "theme": "Incomplete",
+            "description": "Inspired by the idea: If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?"
+        },
         {
             "image": "/DOATOONs-/Images/Jace Norman.png",
             "title": "Jace Lee Norman",
