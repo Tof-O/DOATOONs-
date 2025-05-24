@@ -4,6 +4,11 @@
     "galleryItems": [
         {
             "image": "/DOATOONs-/Logos/Official.png",
+            "title": "Testing",
+            "description": "xyz11"
+        },
+        {
+            "image": "/DOATOONs-/Logos/Official.png",
             "title": "DOATOONs Official Logo",
             "description": "xyz1"
         },
