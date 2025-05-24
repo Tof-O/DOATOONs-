@@ -289,6 +289,21 @@
                 console.error('Error loading edit.json:', error);
                 document.getElementById('pageTitle').textContent = "Error Loading Visual Effects";
             });
+
+        // Adjust content margin based on header height
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content');
+            const headerHeight = header.offsetHeight;
+            pageContent.style.marginTop = `${headerHeight}px`;
+        });
+
+        window.addEventListener('resize', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content');
+            const headerHeight = header.offsetHeight;
+            pageContent.style.marginTop = `${headerHeight}px`;
+        });
     </script>
 </body>
 </html>
