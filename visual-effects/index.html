@@ -237,17 +237,21 @@
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
-        // Ensure the title is preserved
+        // Ensure the title is preserved or reinserted
         function ensureTitle() {
             let pageTitle = document.getElementById('pageTitle');
             let fallbackTitle = document.getElementById('fallbackTitle');
             if (!pageTitle && !fallbackTitle) {
                 const pageContent = document.querySelector('.page-content');
-                const newTitle = document.createElement('h1');
-                newTitle.id = 'pageTitle';
-                newTitle.textContent = 'Visual Effects';
-                pageContent.insertBefore(newTitle, pageContent.firstChild);
-                pageTitle = newTitle;
+                pageTitle = document.createElement('h1');
+                pageTitle.id = 'pageTitle';
+                pageTitle.textContent = 'Visual Effects';
+                pageContent.insertBefore(pageTitle, pageContent.firstChild);
+                fallbackTitle = document.createElement('h2');
+                fallbackTitle.id = 'fallbackTitle';
+                fallbackTitle.style.display = 'none';
+                fallbackTitle.textContent = 'Visual Effects';
+                pageContent.insertBefore(fallbackTitle, pageContent.firstChild);
             }
             return { pageTitle, fallbackTitle };
         }
@@ -333,6 +337,19 @@
                     console.error('pageTitle element not found in catch block');
                 }
             });
+
+        // Reinsert title after a delay to account for scripts.js
+        setTimeout(() => {
+            const { pageTitle, fallbackTitle } = ensureTitle();
+            if (!document.querySelector('h1#pageTitle, h2#fallbackTitle')) {
+                const pageContent = document.querySelector('.page-content');
+                const newTitle = document.createElement('h1');
+                newTitle.id = 'pageTitle';
+                newTitle.textContent = 'Visual Effects';
+                pageContent.insertBefore(newTitle, pageContent.firstChild);
+                console.log('Reinserted title due to DOM manipulation');
+            }
+        }, 500); // 500ms delay to allow scripts.js to run
 
         // Adjust content margin based on header height
         window.addEventListener('load', () => {
