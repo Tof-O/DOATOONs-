@@ -26,36 +26,19 @@
             top: 0;
             z-index: 1000;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .logo img {
-            height: 70px;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .hamburger:hover {
-            color: #a0d995;
+            align-items: center;
         }
 
         .page-content {
             padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
-            margin-top: 100px; /* Fallback margin */
+            margin-top: 100px;
         }
 
         h1, h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem */
             background: linear-gradient(to right, #a0d995, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -130,87 +113,6 @@
         .close-icon:hover {
             color: #ffffff;
         }
-
-        footer {
-            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-
-        .slogan {
-            font-style: italic;
-            margin: 0.5rem 0;
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-            }
-
-            .logo img {
-                height: 50px;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .page-content {
-                padding: 0 1rem 1rem;
-                margin-top: 80px;
-            }
-
-            h1, h2 {
-                font-size: 2rem;
-            }
-
-            .intro-text {
-                font-size: 1rem;
-            }
-
-            .gallery-track img {
-                width: 150px;
-                height: 150px;
-            }
-
-            footer {
-                padding: 1rem;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1, h2 {
-                font-size: 1.5rem;
-            }
-
-            .intro-text {
-                font-size: 0.9rem;
-            }
-
-            .gallery-track img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .close-icon {
-                font-size: 1.5rem;
-                top: 15px;
-                right: 15px;
-            }
-
-            .page-content {
-                margin-top: 70px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -218,7 +120,7 @@
 
     <div class="page-content" style="margin-top: 100px;">
         <h1 id="pageTitle">Visual Effects</h1>
-        <h2 id="fallbackTitle" style="display: none; text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(to right, #a0d995, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Visual Effects</h2>
+        <h2 id="fallbackTitle" style="display: none; text-align: center; font-size: 2.5rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #a0d995, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Visual Effects</h2>
         <p class="intro-text">
             Welcome to our Visual Effects gallery! Dive into a world of stunning transformations and dynamic effects. Click on any image in the scrolling gallery below to view it in full-screen and explore the magic up close.
         </p>
@@ -356,14 +258,14 @@
             const header = document.querySelector('header');
             const pageContent = document.querySelector('.page-content');
             const headerHeight = header ? header.offsetHeight : 100;
-            pageContent.style.marginTop = `${Math.max(headerHeight, 100)}px`;
+            pageContent.style.margin-top = `${Math.max(headerHeight, 100)}px`;
         });
 
         window.addEventListener('resize', () => {
             const header = document.querySelector('header');
             const pageContent = document.querySelector('.page-content');
             const headerHeight = header ? header.offsetHeight : 100;
-            pageContent.style.marginTop = `${Math.max(headerHeight, 100)}px`;
+            pageContent.style.margin-top = `${Math.max(headerHeight, 100)}px`;
         });
     </script>
 </body>
