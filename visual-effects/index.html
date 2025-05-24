@@ -34,77 +34,6 @@
             height: 70px;
         }
 
-        .header-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding-top: 1rem;
-            border-top: 1px solid white;
-        }
-
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 0.5rem 0.5rem 0.5rem 2rem;
-            border: none;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            width: 200px;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .cancel-icon {
-            position: absolute;
-            right: 10px;
-            color: #a0d995;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #a0d995;
-        }
-
-        .contact-link {
-            padding: 1rem 2rem;
-            border: 2px solid white;
-            transition: box-shadow 0.3s;
-        }
-
-        .contact-link:hover {
-            color: #a0d995;
-            box-shadow: 0 0 10px white;
-        }
-
-        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             font-size: 2rem;
@@ -118,17 +47,27 @@
         }
 
         .page-content {
-            padding: 0 2rem 2rem; /* No padding-top; it will be set dynamically by JavaScript */
+            padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
         h1 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, #a0d995, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .scrolling-gallery {
@@ -155,7 +94,6 @@
             cursor: pointer;
         }
 
-        /* Full-screen overlay */
         .image-overlay {
             display: none;
             position: fixed;
@@ -207,9 +145,7 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
-            /* Adjust header for mobile */
             header {
                 padding: 1rem;
             }
@@ -218,34 +154,20 @@
                 height: 50px;
             }
 
-            .header-bottom {
-                flex-direction: row;
-                gap: 1rem;
-            }
-
-            .search-container {
-                flex: 1;
-            }
-
-            .search-bar {
-                width: 100%;
-            }
-
-            nav {
-                display: none;
-            }
-
             .hamburger {
                 display: block;
             }
 
-            /* Adjust page content */
             .page-content {
-                padding: 0 1rem 1rem; /* No padding-top; it will be set dynamically by JavaScript */
+                padding: 0 1rem 1rem;
             }
 
             h1 {
                 font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
             }
 
             .gallery-track img {
@@ -262,10 +184,13 @@
             }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.5rem;
+            }
+
+            .intro-text {
+                font-size: 0.9rem;
             }
 
             .gallery-track img {
@@ -282,16 +207,18 @@
     </style>
 </head>
 <body>
-   <div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1>Visual Effects</h1>
+        <h1 id="pageTitle"></h1>
+        <p class="intro-text">
+            Welcome to our Visual Effects gallery! Dive into a world of stunning transformations and dynamic effects. Click on any image in the scrolling gallery below to view it in full-screen and explore the magic up close.
+        </p>
         <div class="scrolling-gallery">
             <div class="gallery-track" id="galleryTrack">
                 <!-- Images will be dynamically inserted -->
             </div>
         </div>
-        <!-- Full-screen image overlay -->
         <div class="image-overlay" id="imageOverlay">
             <img id="overlayImage" src="" alt="Full-screen image">
             <span class="close-icon" id="closeOverlay">✖</span>
@@ -303,9 +230,12 @@
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
         // Fetch content from edit.json and update the page
-        fetch('/DOATOONs-/visual-effects/edit.json')
+        fetch('./edit.json')
             .then(response => response.json())
             .then(data => {
+                // Update page title
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+
                 const galleryTrack = document.getElementById('galleryTrack');
                 const imageWidth = 220; // Image width (200px) + margin (10px + 10px)
                 let position = 0;
@@ -357,63 +287,7 @@
             })
             .catch(error => {
                 console.error('Error loading edit.json:', error);
-                // Fallback to default content if edit.json fails to load
-                const galleryTrack = document.getElementById('galleryTrack');
-                const defaultImages = [
-                    "/DOATOONs-/Images/Goku.png",
-                    "/DOATOONs-/Images/Goku ssj2.png",
-                    "/DOATOONs-/Images/Super Sonic.png",
-                    "/DOATOONs-/Images/Super evil sonic.png",
-                    "/DOATOONs-/Images/SSJ god.png",
-                    "/DOATOONs-/Images/Sonic.png",
-                    "/DOATOONs-/Logos/DOATOONs Epic.png"
-                ];
-                const imageWidth = 220;
-                let position = 0;
-                let scrollSpeed = 1;
-
-                defaultImages.forEach((src, index) => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = src.split('/').pop().split('.')[0].replace(/[^a-zA-Z0-9]/g, ' ');
-                    img.onerror = () => { img.onerror = null; img.src = `https://via.placeholder.com/200x200?text=${img.alt.replace(/ /g, '+')}`; };
-                    galleryTrack.appendChild(img);
-                });
-
-                const images = Array.from(galleryTrack.querySelectorAll('img'));
-                galleryTrack.style.width = `${images.length * imageWidth}px`;
-
-                function updateScroll() {
-                    position -= scrollSpeed;
-                    galleryTrack.style.transform = `translateX(${position}px)`;
-
-                    if (Math.abs(position) >= imageWidth) {
-                        position += imageWidth;
-                        const firstImage = galleryTrack.firstElementChild;
-                        galleryTrack.appendChild(firstImage);
-                        galleryTrack.style.transform = `translateX(${position}px)`;
-                    }
-
-                    requestAnimationFrame(updateScroll);
-                }
-
-                requestAnimationFrame(updateScroll);
-
-                // Image click to open overlay
-                const overlay = document.getElementById('imageOverlay');
-                const overlayImage = document.getElementById('overlayImage');
-                const closeOverlay = document.getElementById('closeOverlay');
-
-                images.forEach(img => {
-                    img.addEventListener('click', () => {
-                        overlayImage.src = img.src;
-                        overlay.style.display = 'flex';
-                    });
-                });
-
-                closeOverlay.addEventListener('click', () => {
-                    overlay.style.display = 'none';
-                });
+                document.getElementById('pageTitle').textContent = "Error Loading Visual Effects";
             });
     </script>
 </body>
