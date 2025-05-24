@@ -166,7 +166,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
@@ -296,7 +295,7 @@
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
         // Fetch content from edit.json and update the page
-        fetch('/DOATOONs-/typeface-creations/edit.json')
+        fetch('./edit.json')
             .then(response => response.json())
             .then(data => {
                 // Update page title
@@ -311,7 +310,7 @@
                 // Dynamically generate gallery sections
                 const galleryContainer = document.getElementById('galleryContainer');
                 data.galleryItems.forEach((item, index) => {
-                    const isReverse = index % 2 === 1; // Alternate layout
+                    const isReverse = index % 2 === 1; // First item (index 0) on left, then alternate
                     const section = document.createElement('div');
                     section.className = `typeface-details ${isReverse ? 'reverse' : ''}`;
                     section.innerHTML = `
@@ -329,51 +328,13 @@
             })
             .catch(error => {
                 console.error('Error loading edit.json:', error);
-                // Fallback to default content if edit.json fails to load
                 document.getElementById('typefaceHeader').innerHTML = `
                     <div class="title-container">
                         <h1>BROWSE</h1>
-                        <h1><span>Custom Typeface Creations</span></h1>
+                        <h1><span>Error Loading Custom Typeface Creations</span></h1>
                     </div>
                     <a href="/stylistic-accents.html" class="learn-more">Learn More</a>
                 `;
-                const galleryContainer = document.getElementById('galleryContainer');
-                const defaultItems = [
-                    {
-                        "image": "/DOATOONs-/Images/Jace Norman.png",
-                        "title": "Jace Lee Norman",
-                        "theme": "Incomplete",
-                        "description": "Inspired by the idea: If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?"
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/Jace Norman.png",
-                        "title": "Elon Reeve Musk",
-                        "theme": "Neo - Modern",
-                        "description": "Inspired by the idea: The cyber vanguard demands a font that embodies the essence of the future—bold, sleek, and visionary."
-                    },
-                    {
-                        "image": "/DOATOONs-/Images/Jace Norman.png",
-                        "title": "Jace Lee Norman",
-                        "theme": "Incomplete",
-                        "description": "Inspired by the idea: If the Mona Lisa is incomplete, why should a great artwork ever be considered finished?"
-                    }
-                ];
-                defaultItems.forEach((item, index) => {
-                    const isReverse = index % 2 === 1;
-                    const section = document.createElement('div');
-                    section.className = `typeface-details ${isReverse ? 'reverse' : ''}`;
-                    section.innerHTML = `
-                        <img src="${item.image}" alt="${item.title} Typeface" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=${item.title.replace(/ /g, '+')}';">
-                        <div class="text-content">
-                            <h2>${item.title}</h2>
-                            <h3>Theme:</h3>
-                            <h3>${item.theme}</h3>
-                            <p>Inspired by the idea:</p>
-                            <p>${item.description}</p>
-                        </div>
-                    `;
-                    galleryContainer.appendChild(section);
-                });
             });
 
         // Adjust content margin based on header height
