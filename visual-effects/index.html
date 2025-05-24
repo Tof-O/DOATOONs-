@@ -49,7 +49,7 @@
         .page-content {
             padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
-            margin-top: 80px; /* Fallback margin to ensure content is below header */
+            margin-top: 100px; /* Increased fallback margin to ensure visibility */
         }
 
         h1 {
@@ -161,7 +161,7 @@
 
             .page-content {
                 padding: 0 1rem 1rem;
-                margin-top: 60px; /* Adjusted fallback for smaller screens */
+                margin-top: 80px; /* Adjusted fallback for smaller screens */
             }
 
             h1 {
@@ -207,7 +207,7 @@
             }
 
             .page-content {
-                margin-top: 50px; /* Adjusted fallback for extra small screens */
+                margin-top: 70px; /* Adjusted fallback for extra small screens */
             }
         }
     </style>
@@ -215,7 +215,7 @@
 <body>
     <div id="header-placeholder"></div>
 
-    <div class="page-content">
+    <div class="page-content" style="margin-top: 100px;"> <!-- Inline fallback for initial load -->
         <h1 id="pageTitle">Visual Effects</h1>
         <p class="intro-text">
             Welcome to our Visual Effects gallery! Dive into a world of stunning transformations and dynamic effects. Click on any image in the scrolling gallery below to view it in full-screen and explore the magic up close.
@@ -297,7 +297,7 @@
             });
 
         // Adjust content margin based on header height
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('load', () => {
             const header = document.querySelector('header');
             const pageContent = document.querySelector('.page-content');
             const headerHeight = header.offsetHeight;
