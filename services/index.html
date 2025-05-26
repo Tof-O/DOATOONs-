@@ -104,21 +104,8 @@
             box-shadow: 0 0 10px white;
         }
 
-        /* Hamburger Menu Icon */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .hamburger:hover {
-            color: #a0d995;
-        }
-
         .page-content {
-            padding: 0 2rem 2rem; /* No padding-top; it will be set dynamically by JavaScript */
+            padding: 0 2rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
@@ -201,25 +188,8 @@
             color: #ffffff;
         }
 
-        footer {
-            background: linear-gradient(to right, #2a3d2f, #1a2a1f);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-
-        .slogan {
-            font-style: italic;
-            margin: 0.5rem 0;
-        }
-
         /* Responsive Design for Mobile */
         @media (max-width: 768px) {
-            /* Adjust header for mobile */
             header {
                 padding: 1rem;
             }
@@ -241,17 +211,8 @@
                 width: 100%;
             }
 
-            nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            /* Adjust page content */
             .page-content {
-                padding: 0 1rem 1rem; /* No padding-top; it will be set dynamically by JavaScript */
+                padding: 0 1rem 1rem;
             }
 
             h1 {
@@ -291,17 +252,8 @@
             .service-text h3 {
                 font-size: 1.3rem;
             }
-
-            footer {
-                padding: 1rem;
-            }
-
-            .footer-logo img {
-                height: 40px;
-            }
         }
 
-        /* Extra small screens */
         @media (max-width: 480px) {
             h1 {
                 font-size: 1.5rem;
@@ -336,44 +288,82 @@
    <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1>Services</h1>
-        <p class="intro-text">At DOATOONs, we offer a wide range of animation services to bring your ideas to life. From 2D and 3D animations to visual effects and custom designs, we’ve got you covered. Let’s create something amazing together!</p>
-        <a href="contact-us.html" class="contact-button">Contact Us</a>
+        <h1 id="pageTitle">Services</h1>
+        <p class="intro-text" id="introText">At DOATOONs, we offer a wide range of animation services to bring your ideas to life. From 2D and 3D animations to visual effects and custom designs, we’ve got you covered. Let’s create something amazing together!</p>
+        <a href="contact-us.html" class="contact-button" id="contactButton">Contact Us</a>
 
-        <!-- 2D Animations -->
-        <div class="service-section">
-            <img src="/DOATOONs-/Images/Animation 2d.jpg" alt="2D Animation" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=2D+Animation';">
-            <div class="service-text">
-                <h3><a href="/DOATOONs-/animations">2D Animations</a></h3>
-                <p>Our 2D animation services include hand-drawn, sprite sheet, and stickman animations, perfect for storytelling and engaging visuals.</p>
-                <p>Let us bring your characters to life with fluid and expressive movements.</p>
-            </div>
-        </div>
-
-        <!-- 3D Animations -->
-        <div class="service-section reverse">
-            <img src="/DOATOONs-/Images/Sonic.png" alt="3D Animation" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=3D+Animation';">
-            <div class="service-text">
-                <h3><a href="/DOATOONs-/animations/3d-animations">3D Animations</a></h3>
-                <p>Our 3D animation services are coming soon! Stay tuned for high-quality, realistic animations that add depth to your projects.</p>
-                <p>We’ll help you create stunning visuals that captivate your audience.</p>
-            </div>
-        </div>
-
-        <!-- Visual Effects -->
-        <div class="service-section">
-            <img src="/DOATOONs-/Images/Jace Norman.png" alt="Visual Effects" class="service-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Visual+Effects';">
-            <div class="service-text">
-                <h3><a href="/DOATOONs-/visual-effects.html">Visual Effects</a></h3>
-                <p>Enhance your projects with our visual effects services, including motion graphics, particle effects, and more.</p>
-                <p>We’ll add that extra flair to make your animations stand out.</p>
-            </div>
-        </div>
+        <div id="servicesContainer"></div>
     </div>
 
     <div id="footer-placeholder"></div>
 
-
     <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Fetch content from edit.json and update the page
+        fetch('./edit.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Fetched data:', data);
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+                document.getElementById('introText').textContent = data.introText;
+                document.getElementById('contactButton').textContent = data.contactButton || 'Contact Us';
+
+                const servicesContainer = document.getElementById('servicesContainer');
+                data.services.forEach((service, index) => {
+                    const isReverse = index % 2 === 1;
+                    const section = document.createElement('div');
+                    section.className = `service-section ${isReverse ? 'reverse' : ''}`;
+
+                    const image = document.createElement('img');
+                    image.src = service.image;
+                    image.alt = service.alt;
+                    image.className = 'service-image';
+                    image.onerror = () => { image.onerror = null; image.src = `https://via.placeholder.com/200x200?text=${service.alt.replace(/ /g, '+')}`; };
+
+                    const textDiv = document.createElement('div');
+                    textDiv.className = 'service-text';
+                    const title = document.createElement('h3');
+                    const link = document.createElement('a');
+                    link.href = service.link;
+                    link.textContent = service.title;
+                    title.appendChild(link);
+                    textDiv.appendChild(title);
+                    service.description.forEach(desc => {
+                        const p = document.createElement('p');
+                        p.textContent = desc;
+                        textDiv.appendChild(p);
+                    });
+
+                    section.appendChild(image);
+                    section.appendChild(textDiv);
+                    servicesContainer.appendChild(section);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                document.getElementById('pageTitle').textContent = "Error Loading Services";
+                document.getElementById('introText').textContent = "An error occurred while loading the services content.";
+            });
+
+        // Adjust content margin based on header height
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content');
+            const headerHeight = header ? header.offsetHeight : 100;
+            pageContent.style.paddingTop = `${headerHeight}px`;
+        });
+
+        window.addEventListener('resize', () => {
+            const header = document.querySelector('header');
+            const pageContent = document.querySelector('.page-content');
+            const headerHeight = header ? header.offsetHeight : 100;
+            pageContent.style.paddingTop = `${headerHeight}px`;
+        });
+    </script>
 </body>
 </html>
