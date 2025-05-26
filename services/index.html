@@ -288,9 +288,9 @@
    <div id="header-placeholder"></div>
 
     <div class="page-content">
-        <h1 id="pageTitle">Services</h1>
-        <p class="intro-text" id="introText">At DOATOONs, we offer a wide range of animation services to bring your ideas to life. From 2D and 3D animations to visual effects and custom designs, we’ve got you covered. Let’s create something amazing together!</p>
-        <a href="contact-us.html" class="contact-button" id="contactButton">Contact Us</a>
+        <h1 id="pageTitle"></h1>
+        <p class="intro-text" id="introText"></p>
+        <a href="contact-us.html" class="contact-button" id="contactButton"></a>
 
         <div id="servicesContainer"></div>
     </div>
@@ -309,45 +309,50 @@
             })
             .then(data => {
                 console.log('Fetched data:', data);
-                document.getElementById('pageTitle').textContent = data.pageTitle;
-                document.getElementById('introText').textContent = data.introText;
+                document.getElementById('pageTitle').textContent = data.pageTitle || 'Services';
+                document.getElementById('introText').textContent = data.introText || 'An error occurred while loading the introductory text.';
                 document.getElementById('contactButton').textContent = data.contactButton || 'Contact Us';
 
                 const servicesContainer = document.getElementById('servicesContainer');
-                data.services.forEach((service, index) => {
-                    const isReverse = index % 2 === 1;
-                    const section = document.createElement('div');
-                    section.className = `service-section ${isReverse ? 'reverse' : ''}`;
+                if (data.services && Array.isArray(data.services)) {
+                    data.services.forEach((service, index) => {
+                        const isReverse = index % 2 === 1;
+                        const section = document.createElement('div');
+                        section.className = `service-section ${isReverse ? 'reverse' : ''}`;
 
-                    const image = document.createElement('img');
-                    image.src = service.image;
-                    image.alt = service.alt;
-                    image.className = 'service-image';
-                    image.onerror = () => { image.onerror = null; image.src = `https://via.placeholder.com/200x200?text=${service.alt.replace(/ /g, '+')}`; };
+                        const image = document.createElement('img');
+                        image.src = service.image;
+                        image.alt = service.alt;
+                        image.className = 'service-image';
+                        image.onerror = () => { image.onerror = null; image.src = `https://via.placeholder.com/200x200?text=${service.alt.replace(/ /g, '+')}`; };
 
-                    const textDiv = document.createElement('div');
-                    textDiv.className = 'service-text';
-                    const title = document.createElement('h3');
-                    const link = document.createElement('a');
-                    link.href = service.link;
-                    link.textContent = service.title;
-                    title.appendChild(link);
-                    textDiv.appendChild(title);
-                    service.description.forEach(desc => {
-                        const p = document.createElement('p');
-                        p.textContent = desc;
-                        textDiv.appendChild(p);
+                        const textDiv = document.createElement('div');
+                        textDiv.className = 'service-text';
+                        const title = document.createElement('h3');
+                        const link = document.createElement('a');
+                        link.href = service.link;
+                        link.textContent = service.title;
+                        title.appendChild(link);
+                        textDiv.appendChild(title);
+                        if (service.description && Array.isArray(service.description)) {
+                            service.description.forEach(desc => {
+                                const p = document.createElement('p');
+                                p.textContent = desc;
+                                textDiv.appendChild(p);
+                            });
+                        }
+
+                        section.appendChild(image);
+                        section.appendChild(textDiv);
+                        servicesContainer.appendChild(section);
                     });
-
-                    section.appendChild(image);
-                    section.appendChild(textDiv);
-                    servicesContainer.appendChild(section);
-                });
+                }
             })
             .catch(error => {
                 console.error('Error loading edit.json:', error);
                 document.getElementById('pageTitle').textContent = "Error Loading Services";
                 document.getElementById('introText').textContent = "An error occurred while loading the services content.";
+                document.getElementById('contactButton').textContent = "Contact Us";
             });
 
         // Adjust content margin based on header height
