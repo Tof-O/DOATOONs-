@@ -1,0 +1,36 @@
+{
+    "pageTitle": "Services",
+    "introText": "At DOATOONs, we offer a wide range of animation services to bring your ideas to life. From 2D and 3D animations to visual effects and custom designs, we’ve got you covered. Let’s create something amazing together!",
+    "services": [
+        {
+            "image": "/DOATOONs-/Images/Animation 2d.jpg",
+            "alt": "2D Animation",
+            "title": "2D Animations",
+            "link": "/DOATOONs-/animations",
+            "description": [
+                "Our 2D animation services include hand-drawn, sprite sheet, and stickman animations, perfect for storytelling and engaging visuals.",
+                "Let us bring your characters to life with fluid and expressive movements."
+            ]
+        },
+        {
+            "image": "/DOATOONs-/Images/Sonic.png",
+            "alt": "3D Animation",
+            "title": "3D Animations",
+            "link": "/DOATOONs-/animations/3d-animations",
+            "description": [
+                "Our 3D animation services are coming soon! Stay tuned for high-quality, realistic animations that add depth to your projects.",
+                "We’ll help you create stunning visuals that captivate your audience."
+            ]
+        },
+        {
+            "image": "/DOATOONs-/Images/Jace Norman.png",
+            "alt": "Visual Effects",
+            "title": "Visual Effects",
+            "link": "/DOATOONs-/visual-effects.html",
+            "description": [
+                "Enhance your projects with our visual effects services, including motion graphics, particle effects, and more.",
+                "We’ll add that extra flair to make your animations stand out."
+            ]
+        }
+    ]
+}
