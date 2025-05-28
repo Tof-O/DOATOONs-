@@ -1,0 +1,43 @@
+{
+    "pageTitle": "Typeface Order",
+    "formFields": [
+        {
+            "type": "text",
+            "label": "First Name",
+            "id": "firstName",
+            "required": true
+        },
+        {
+            "type": "text",
+            "label": "Middle Name (Optional)",
+            "id": "middleName",
+            "required": false
+        },
+        {
+            "type": "text",
+            "label": "Last Name (Optional)",
+            "id": "lastName",
+            "required": false
+        },
+        {
+            "type": "select",
+            "label": "Border Type",
+            "id": "borderType",
+            "options": ["1", "2", "3", "4", "5"],
+            "required": true
+        },
+        {
+            "type": "text",
+            "label": "Theme (max 3 words)",
+            "id": "theme",
+            "required": true
+        },
+        {
+            "type": "select",
+            "label": "Colour",
+            "id": "colour",
+            "options": ["Blue", "Green", "Black", "Red", "Purple"],
+            "required": true
+        }
+    ]
+}
