@@ -19,7 +19,7 @@
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
-            background-image: url('/DOATOONs-/Logos/DOATOONS Epic.png'); /* Replace with your logo path */
+            background-image: url('/DOATOONs-/Logos/DOATOONs Epic.png'); /* Replace with your logo path */
             background-repeat: no-repeat;
             background-position: center;
             background-size: 200px 200px;
@@ -52,13 +52,13 @@
 
         .form-container {
             max-width: 600px;
-            margin: 150px auto 150px; /* Increased margin for more space */
+            margin: 0 auto 150px; /* Removed margin-top; will set dynamically */
             padding: 40px;
             background: rgba(26, 42, 31, 0.9);
-            border-radius: 15px; /* Uniform rounded edges for all corners */
+            border-radius: 15px;
             box-shadow: 0 4px 15px rgba(160, 217, 149, 0.3);
             animation: fadeIn 1s ease-in;
-            min-height: calc(60vh - 300px); /* Adjusted for consistent spacing */
+            min-height: calc(60vh - 300px);
         }
 
         @keyframes fadeIn {
@@ -181,14 +181,14 @@
         }
 
         @media (max-width: 768px) {
-            .form-container { margin: 80px auto 80px; padding: 20px; min-height: calc(60vh - 160px); }
+            .form-container { margin: 0 auto 80px; padding: 20px; min-height: calc(60vh - 160px); }
             h1 { font-size: 2rem; }
             input, select { font-size: 0.9rem; }
             button { width: 150px; font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
-            .form-container { margin: 60px auto 60px; padding: 15px; min-height: calc(60vh - 120px); }
+            .form-container { margin: 0 auto 60px; padding: 15px; min-height: calc(60vh - 120px); }
             h1 { font-size: 1.5rem; }
             input, select { font-size: 0.8rem; }
             button { width: 120px; font-size: 0.9rem; }
@@ -201,7 +201,7 @@
     <div class="form-container">
         <h1 id="pageTitle">Typeface Order</h1>
         <form id="orderForm">
-            <!-- Form fields will be dynamically inserted here. -->
+            <!-- Form fields will be dynamically inserted here -->
         </form>
         <div id="card-element"></div>
         <button id="orderButton">Order Now</button>
@@ -307,20 +307,27 @@
             return data;
         }
 
-        // Adjust content padding based on header height
-        window.addEventListener('load', () => {
+        // Function to adjust form container margin based on header height
+        function adjustFormMargin() {
             const header = document.querySelector('header');
             const formContainer = document.querySelector('.form-container');
-            const headerHeight = header ? header.offsetHeight : 100;
-            formContainer.style.paddingTop = `${headerHeight + 20}px`;
+            const headerHeight = header ? header.offsetHeight : 0;
+            const additionalMargin = 50; // Additional buffer for spacing
+            formContainer.style.marginTop = `${headerHeight + additionalMargin}px`;
+        }
+
+        // Run on load
+        window.addEventListener('load', () => {
+            adjustFormMargin();
         });
 
+        // Run on resize to handle dynamic header height changes
         window.addEventListener('resize', () => {
-            const header = document.querySelector('header');
-            const formContainer = document.querySelector('.form-container');
-            const headerHeight = header ? header.offsetHeight : 100;
-            formContainer.style.paddingTop = `${headerHeight + 20}px`;
+            adjustFormMargin();
         });
+
+        // Fallback: Run after a short delay to ensure header is loaded
+        setTimeout(adjustFormMargin, 1000);
     </script>
 </body>
 </html>
