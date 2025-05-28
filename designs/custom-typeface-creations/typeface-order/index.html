@@ -20,9 +20,21 @@
             min-height: 100vh;
         }
 
+        header {
+            background: #000000;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         .form-container {
             max-width: 600px;
-            margin: 50px auto;
+            margin: 0 auto;
             padding: 20px;
             background: rgba(26, 42, 31, 0.9);
             border-radius: 15px;
@@ -57,7 +69,7 @@
             color: #ffffff;
         }
 
-        input, select {
+        input {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -69,10 +81,39 @@
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input:focus, select:focus {
+        input:focus {
             border-color: #ffffff;
             box-shadow: 0 0 10px #a0d995;
             outline: none;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #a0d995;
+            border-radius: 25px;
+            background: #2a3d2f; /* Darker background for better contrast */
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            -webkit-appearance: none; /* Remove default dropdown arrow for custom styling */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23a0d995" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        select:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 10px #a0d995;
+            outline: none;
+        }
+
+        select option {
+            background: #2a3d2f; /* Dark background for options */
+            color: white; /* White text for options */
         }
 
         button {
@@ -135,6 +176,8 @@
     </style>
 </head>
 <body>
+    <div id="header-placeholder"></div>
+
     <div class="form-container">
         <h1 id="pageTitle">Typeface Order</h1>
         <form id="orderForm">
@@ -145,6 +188,9 @@
         <div id="errorMessage" class="error"></div>
     </div>
 
+    <div id="footer-placeholder"></div>
+
+    <script src="/DOATOONs-/scripts.js"></script>
     <script>
         const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
         const elements = stripe.elements();
@@ -240,6 +286,21 @@
             });
             return data;
         }
+
+        // Adjust content padding based on header height
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const formContainer = document.querySelector('.form-container');
+            const headerHeight = header ? header.offsetHeight : 100;
+            formContainer.style.paddingTop = `${headerHeight + 20}px`;
+        });
+
+        window.addEventListener('resize', () => {
+            const header = document.querySelector('header');
+            const formContainer = document.querySelector('.form-container');
+            const headerHeight = header ? header.offsetHeight : 100;
+            formContainer.style.paddingTop = `${headerHeight + 20}px`;
+        });
     </script>
 </body>
 </html>
