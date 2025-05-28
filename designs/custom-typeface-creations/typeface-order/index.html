@@ -1,1 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typeface Order</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .form-container { max-width: 600px; margin: 20px auto; padding: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input, select { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        #card-element { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 id="pageTitle">Typeface Order</h1>
+        <form id="orderForm">
+            <!-- Form fields will be dynamically inserted here -->
+        </form>
+        <div id="card-element"></div>
+        <button id="orderButton">Order Now</button>
+        <div id="errorMessage" class="error"></div>
+    </div>
 
+    <script>
+        const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
+        const elements = stripe.elements();
+        const card = elements.create('card');
+        card.mount('#card-element');
+
+        // Fetch and generate form from edit.json
+        fetch('./edit.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('pageTitle').textContent = data.pageTitle;
+                const form = document.getElementById('orderForm');
+                data.formFields.forEach(field => {
+                    const label = document.createElement('label');
+                    label.textContent = field.label;
+                    label.for = field.id;
+                    form.appendChild(label);
+
+                    let input;
+                    if (field.type === 'select') {
+                        input = document.createElement('select');
+                        input.id = field.id;
+                        field.options.forEach(option => {
+                            const opt = document.createElement('option');
+                            opt.value = option;
+                            opt.textContent = option;
+                            input.appendChild(opt);
+                        });
+                    } else {
+                        input = document.createElement('input');
+                        input.type = field.type;
+                        input.id = field.id;
+                    }
+                    if (field.required) {
+                        input.setAttribute('required', 'required');
+                    }
+                    form.appendChild(input);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                document.getElementById('pageTitle').textContent = "Error Loading Form";
+            });
+
+        // Handle form submission and payment
+        document.getElementById('orderButton').addEventListener('click', () => {
+            const form = document.getElementById('orderForm');
+            const theme = document.getElementById('theme');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Custom validation for Theme (max 3 words)
+            if (theme && theme.value.trim().split(/\s+/).length > 3) {
+                errorMessage.textContent = "Theme must be 3 words or fewer.";
+                return;
+            } else {
+                errorMessage.textContent = "";
+            }
+
+            if (form.checkValidity()) {
+                stripe.createToken(card).then(result => {
+                    if (result.error) {
+                        errorMessage.textContent = result.error.message;
+                    } else {
+                        // Payment token created, send to server
+                        const orderData = getFormData();
+                        fetch('/charge', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ token: result.token.id, orderDetails: orderData })
+                        }).then(response => {
+                            if (response.ok) {
+                                alert('Payment successful! Order submitted.');
+                                // Here, order details are sent to you (e.g., via email or database)
+                            } else {
+                                errorMessage.textContent = 'Payment failed. Please try again.';
+                            }
+                        }).catch(err => {
+                            errorMessage.textContent = 'An error occurred. Please try again.';
+                        });
+                    }
+                });
+            } else {
+                errorMessage.textContent = "Please fill out all required fields.";
+            }
+        });
+
+        // Collect form data
+        function getFormData() {
+            const form = document.getElementById('orderForm');
+            const data = {};
+            form.querySelectorAll('input, select').forEach(input => {
+                data[input.id] = input.value;
+            });
+            return data;
+        }
+    </script>
+</body>
+</html>
