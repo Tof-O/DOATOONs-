@@ -18,6 +18,26 @@
             color: white;
             line-height: 1.6;
             min-height: 100vh;
+            position: relative;
+            /* Add logo background with opacity gradient */
+            background-image: url('/DOATOONs-/Images/logo.png'); /* Replace with your logo path */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 200px 200px; /* Adjust size as needed */
+            background-attachment: fixed;
+        }
+
+        /* Overlay to create opacity gradient effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 42, 31, 0.7), rgba(10, 15, 13, 0.9));
+            z-index: -1;
+            pointer-events: none; /* Ensure it doesn't interfere with clicks */
         }
 
         header {
@@ -34,12 +54,13 @@
 
         .form-container {
             max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 120px auto 120px; /* Increased margin for more space */
+            padding: 40px; /* Increased padding for internal spacing */
             background: rgba(26, 42, 31, 0.9);
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(160, 217, 149, 0.3);
             animation: fadeIn 1s ease-in;
+            min-height: calc(60vh - 240px); /* Ensure ample vertical space */
         }
 
         @keyframes fadeIn {
@@ -93,11 +114,11 @@
             margin-bottom: 15px;
             border: 2px solid #a0d995;
             border-radius: 25px;
-            background: #2a3d2f; /* Darker background for better contrast */
+            background: #2a3d2f;
             color: white;
             font-size: 1rem;
             transition: border-color 0.3s, box-shadow 0.3s;
-            -webkit-appearance: none; /* Remove default dropdown arrow for custom styling */
+            -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
             background-image: url('data:image/svg+xml;utf8,<svg fill="%23a0d995" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
@@ -112,8 +133,8 @@
         }
 
         select option {
-            background: #2a3d2f; /* Dark background for options */
-            color: white; /* White text for options */
+            background: #2a3d2f;
+            color: white;
         }
 
         button {
@@ -162,13 +183,14 @@
         }
 
         @media (max-width: 768px) {
-            .form-container { margin: 30px auto; padding: 15px; }
+            .form-container { margin: 80px auto 80px; padding: 20px; min-height: calc(60vh - 160px); }
             h1 { font-size: 2rem; }
             input, select { font-size: 0.9rem; }
             button { width: 150px; font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
+            .form-container { margin: 60px auto 60px; padding: 15px; min-height: calc(60vh - 120px); }
             h1 { font-size: 1.5rem; }
             input, select { font-size: 0.8rem; }
             button { width: 120px; font-size: 0.9rem; }
