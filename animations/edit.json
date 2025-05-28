@@ -6,19 +6,19 @@
         {
             "image": "/DOATOONs-/Images/Eye.png",
             "title": "Hand Drawn",
-            "link": "hand-drawn.html",
+            "link": "2d-animations/hand-drawn",
             "subtitle": "2D Animations"
         },
         {
             "image": "/DOATOONs-/Images/Sprite.png",
             "title": "Sprite Sheet",
-            "link": "sprite-sheet.html",
+            "link": "2d-animations/sprite-sheet",
             "subtitle": "2D Animations"
         },
         {
             "image": "/DOATOONs-/Images/Iron man.png",
             "title": "Stickman",
-            "link": "stickman.html",
+            "link": "2d-animations/stickman",
             "subtitle": "2D Animations"
         }
     ],
