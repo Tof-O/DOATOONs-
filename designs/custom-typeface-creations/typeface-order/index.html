@@ -19,15 +19,13 @@
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
-            /* Add logo background with opacity gradient */
             background-image: url('/DOATOONs-/Images/logo.png'); /* Replace with your logo path */
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 200px 200px; /* Adjust size as needed */
+            background-size: 200px 200px;
             background-attachment: fixed;
         }
 
-        /* Overlay to create opacity gradient effect */
         body::before {
             content: '';
             position: fixed;
@@ -37,7 +35,7 @@
             height: 100%;
             background: linear-gradient(to bottom, rgba(26, 42, 31, 0.7), rgba(10, 15, 13, 0.9));
             z-index: -1;
-            pointer-events: none; /* Ensure it doesn't interfere with clicks */
+            pointer-events: none;
         }
 
         header {
@@ -54,13 +52,13 @@
 
         .form-container {
             max-width: 600px;
-            margin: 120px auto 120px; /* Increased margin for more space */
-            padding: 40px; /* Increased padding for internal spacing */
+            margin: 150px auto 150px; /* Increased margin for more space */
+            padding: 40px;
             background: rgba(26, 42, 31, 0.9);
-            border-radius: 15px;
+            border-radius: 15px; /* Uniform rounded edges for all corners */
             box-shadow: 0 4px 15px rgba(160, 217, 149, 0.3);
             animation: fadeIn 1s ease-in;
-            min-height: calc(60vh - 240px); /* Ensure ample vertical space */
+            min-height: calc(60vh - 300px); /* Adjusted for consistent spacing */
         }
 
         @keyframes fadeIn {
