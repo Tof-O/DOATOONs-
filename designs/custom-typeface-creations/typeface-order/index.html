@@ -20,10 +20,10 @@
             min-height: 100vh;
             position: relative;
             background-image: url('/DOATOONs-/Logos/DOATOONs Epic.png'); /* Replace with your logo path */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 200px 200px;
-            background-attachment: fixed;
+            background-size: cover; /* Scale to cover the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent tiling */
+            background-attachment: fixed; /* Keep the background fixed while scrolling */
         }
 
         body::before {
@@ -33,7 +33,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(26, 42, 31, 0.7), rgba(10, 15, 13, 0.9));
+            background: linear-gradient(to bottom, rgba(26, 42, 31, 0.6), rgba(10, 15, 13, 0.8)); /* Adjusted opacity for professionalism */
             z-index: -1;
             pointer-events: none;
         }
@@ -52,13 +52,13 @@
 
         .form-container {
             max-width: 600px;
-            margin: 0 auto 150px; /* Removed margin-top; will set dynamically */
-            padding: 40px;
-            background: rgba(26, 42, 31, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(160, 217, 149, 0.3);
+            margin: 120px auto 150px; /* Increased top margin for better spacing */
+            padding: 50px; /* Increased padding for a less cramped look */
+            background: rgba(26, 42, 31, 0.85); /* Slightly lighter background for readability */
+            border-radius: 20px; /* Slightly larger radius for a polished look */
+            box-shadow: 0 6px 20px rgba(160, 217, 149, 0.4); /* Enhanced shadow for professionalism */
             animation: fadeIn 1s ease-in;
-            min-height: calc(60vh - 300px);
+            min-height: calc(60vh - 270px); /* Adjusted for new margins and padding */
         }
 
         @keyframes fadeIn {
@@ -69,7 +69,7 @@
         h1 {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem; /* Increased margin for better spacing */
             background: linear-gradient(to right, #a0d995, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -78,7 +78,7 @@
 
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin: 15px 0 8px; /* Increased margins for spacing */
             font-size: 1.1rem;
             color: #a0d995;
             transition: color 0.3s;
@@ -90,8 +90,8 @@
 
         input {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 12px; /* Increased padding for a roomier feel */
+            margin-bottom: 20px; /* Increased margin for spacing */
             border: 2px solid #a0d995;
             border-radius: 25px;
             background: rgba(255, 255, 255, 0.1);
@@ -108,8 +108,8 @@
 
         select {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 2px solid #a0d995;
             border-radius: 25px;
             background: #2a3d2f;
@@ -137,13 +137,13 @@
 
         button {
             display: block;
-            width: 200px;
-            margin: 20px auto;
-            padding: 12px;
+            width: 220px; /* Slightly wider for a balanced look */
+            margin: 30px auto; /* Increased margin for spacing */
+            padding: 14px;
             background: linear-gradient(to right, #a0d995, #ffffff);
             color: #1a2a1f;
             border: none;
-            border-radius: 25px;
+            border-radius: 30px; /* Larger radius for a professional touch */
             font-weight: bold;
             font-size: 1.2rem;
             cursor: pointer;
@@ -156,8 +156,8 @@
         }
 
         #card-element {
-            margin-bottom: 20px;
-            padding: 10px;
+            margin-bottom: 25px; /* Increased margin for spacing */
+            padding: 12px;
             border: 2px solid #a0d995;
             border-radius: 25px;
             background: rgba(255, 255, 255, 0.1);
@@ -167,7 +167,7 @@
         .error {
             color: #ff4d4d;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 15px; /* Increased margin for spacing */
             font-size: 0.9rem;
             animation: shake 0.5s;
         }
@@ -181,17 +181,17 @@
         }
 
         @media (max-width: 768px) {
-            .form-container { margin: 0 auto 80px; padding: 20px; min-height: calc(60vh - 160px); }
+            .form-container { margin: 100px auto 100px; padding: 30px; min-height: calc(60vh - 200px); }
             h1 { font-size: 2rem; }
-            input, select { font-size: 0.9rem; }
-            button { width: 150px; font-size: 1rem; }
+            input, select { font-size: 0.9rem; padding: 10px; }
+            button { width: 180px; font-size: 1rem; padding: 12px; }
         }
 
         @media (max-width: 480px) {
-            .form-container { margin: 0 auto 60px; padding: 15px; min-height: calc(60vh - 120px); }
+            .form-container { margin: 80px auto 80px; padding: 20px; min-height: calc(60vh - 160px); }
             h1 { font-size: 1.5rem; }
-            input, select { font-size: 0.8rem; }
-            button { width: 120px; font-size: 0.9rem; }
+            input, select { font-size: 0.8rem; padding: 8px; }
+            button { width: 150px; font-size: 0.9rem; padding: 10px; }
         }
     </style>
 </head>
@@ -212,7 +212,7 @@
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
-        const stripe = Stripe('pk_test_51RTocIPl50BLA47W44TbzRXtHr3aTO7AyhYcrV837mUAgKu4KAZwcrqldqXog5diBjvV9dIWghVqQs6OM1TH3sCU0026zs6igw'); // Replace with your Stripe publishable key
+        const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
         const elements = stripe.elements();
         const card = elements.create('card');
         card.mount('#card-element');
