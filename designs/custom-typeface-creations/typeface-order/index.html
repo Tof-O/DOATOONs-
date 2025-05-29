@@ -38,58 +38,6 @@
             pointer-events: none;
         }
 
-        header {
-            background: #000000;
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between; /* Distribute space evenly */
-            align-items: center; /* Vertically center items */
-        }
-
-        header nav {
-            display: flex;
-            gap: 1.5rem; /* Consistent spacing between nav items */
-        }
-
-        header nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        header .search-container {
-            position: relative;
-        }
-
-        header .search-container input {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 20px;
-            background: #333;
-            color: white;
-            font-size: 0.9rem;
-            outline: none;
-            width: 150px; /* Adjustable width */
-        }
-
-        header .search-container input::placeholder {
-            color: #a0d995;
-        }
-
-        header .search-container .search-icon {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-            background: url('data:image/svg+xml;utf8,<svg fill="%23a0d995" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>') no-repeat center;
-        }
-
         .form-container {
             max-width: 600px;
             margin: 120px auto 150px;
