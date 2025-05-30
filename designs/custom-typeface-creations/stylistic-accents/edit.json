@@ -15,38 +15,38 @@
     ],
     "sections": {
         "elementalFrameworks": {
-            "paragraph1": "A captivating synthesis of core design elements that form the structure and essence of an artwork, transforming it into a multidimensional experience.",
-            "paragraph2": "The theme acts as a guiding force that shapes the distinctiveness of the font and its associated patterns and shapes.",
-            "paragraph3": "It establishes the visual and conceptual foundation, influencing how each design element interacts to create a cohesive identity.",
-            "paragraph4": "The theme informs the character of the lines, the rhythm of the patterns, and the overall structure of the shapes, giving the font a unique personality.",
-            "paragraph5": "By defining the mood and intent of the design, the theme drives the creative process, ensuring that every curve, edge, and detail aligns with its essence.",
-            "paragraph6": "Patterns and shapes are no longer arbitrary; they become purposeful expressions of the theme, working in harmony to evoke the intended perception and atmosphere.",
-            "paragraph7": "This seamless integration ensures that the font is not merely a functional element but an integral part of the artwork’s narrative."
+            "paragraph1": "A captivating synthesis of core design elements that form the structure and essence of an artwork, transforming it into a multidimensional experience",
+            "paragraph2": "The theme acts as a guiding force that shapes the distinctiveness of the font and its associated patterns and shapes",
+            "paragraph3": "It establishes the visual and conceptual foundation, influencing how each design element interacts to create a cohesive identity",
+            "paragraph4": "The theme informs the character of the lines, the rhythm of the patterns, and the overall structure of the shapes, giving the font a unique personality",
+            "paragraph5": "By defining the mood and intent of the design, the theme drives the creative process, ensuring that every curve, edge, and detail aligns with its essence",
+            "paragraph6": "Patterns and shapes are no longer arbitrary; they become purposeful expressions of the theme, working in harmony to evoke the intended perception and atmosphere",
+            "paragraph7": "This seamless integration ensures that the font is not merely a functional element but an integral part of the artwork’s narrative"
         },
         "thematicPrinciples": {
-            "paragraph1": "The guiding forces behind each theme, these principles dictate how elements like flowlines, borders, and accents align with the overarching idea.",
-            "paragraph2": "They bring cohesion to the design, ensuring that every detail contributes to the intended narrative and visual impact."
+            "paragraph1": "The guiding forces behind each theme, these principles dictate how elements like flowlines, borders, and accents align with the overarching idea",
+            "paragraph2": "They bring cohesion to the design, ensuring that every detail contributes to the intended narrative and visual impact"
         },
         "borderDesign": {
-            "paragraph1": "The Border Design serves as a decorative framework that defines the edges of the artwork, offering a visual boundary that enhances focus on the central elements.",
-            "paragraph2": "Its style can vary widely, ranging from intricate and ornamental patterns to minimalist geometric shapes or abstract lines.",
-            "paragraph3": "The purpose of the border is to complement the theme of the design, whether through a sense of movement, symmetry, or contrast.",
-            "paragraph4": "It acts as both a frame and an extension of the artwork’s personality, adaptable to suit various aesthetic intentions while maintaining its role as an anchoring element."
+            "paragraph1": "The Border Design serves as a decorative framework that defines the edges of the artwork, offering a visual boundary that enhances focus on the central elements",
+            "paragraph2": "Its style can vary widely, ranging from intricate and ornamental patterns to minimalist geometric shapes or abstract lines",
+            "paragraph3": "The purpose of the border is to complement the theme of the design, whether through a sense of movement, symmetry, or contrast",
+            "paragraph4": "It acts as both a frame and an extension of the artwork’s personality, adaptable to suit various aesthetic intentions while maintaining its role as an anchoring element"
         },
         "patternedBackground": {
-            "paragraph1": "The Patterned Background consists of repeated text or imagery that creates texture and depth within the composition.",
-            "paragraph2": "Here, the repetition of the name adds a personalized touch while establishing a rhythm in the design.",
-            "paragraph3": "The background is a subtle layer that interacts with the primary text, creating visual complexity without overwhelming the focal point.",
-            "paragraph4": "This layer acts as a unifying element that ties the composition together, adding a sense of intentionality and flow."
+            "paragraph1": "The Patterned Background consists of repeated text or imagery that creates texture and depth within the composition",
+            "paragraph2": "Here, the repetition of the name adds a personalized touch while establishing a rhythm in the design",
+            "paragraph3": "The background is a subtle layer that interacts with the primary text, creating visual complexity without overwhelming the focal point",
+            "paragraph4": "This layer acts as a unifying element that ties the composition together, adding a sense of intentionality and flow"
         },
         "letterFlowline": {
-            "paragraph1": "The Letter Flowline refers to the lines or shapes that interact with, extend from, or wrap around the letters to enhance their visual impact.",
-            "paragraph2": "These lines can take on various forms, fluid and dynamic, angular and sharp, or even abstract and fragmented, depending on the artistic style and theme.",
-            "paragraph3": "The flowline serves to connect the letters with the surrounding space, creating harmony, emphasis, or motion within the composition.",
-            "paragraph4": "Its adaptability allows it to evoke different emotions and aesthetics, making it a versatile accent in the overall design."
+            "paragraph1": "The Letter Flowline refers to the lines or shapes that interact with, extend from, or wrap around the letters to enhance their visual impact",
+            "paragraph2": "These lines can take on various forms, fluid and dynamic, angular and sharp, or even abstract and fragmented, depending on the artistic style and theme",
+            "paragraph3": "The flowline serves to connect the letters with the surrounding space, creating harmony, emphasis, or motion within the composition",
+            "paragraph4": "Its adaptability allows it to evoke different emotions and aesthetics, making it a versatile accent in the overall design"
         },
         "conclusion": {
-            "paragraph1": "Together, these Stylistic Accents work harmoniously to create an intricate and layered design that feels both cohesive and unique."
+            "paragraph1": "Together, these Stylistic Accents work harmoniously to create an intricate and layered design that feels both cohesive and unique"
         }
     }
 }
