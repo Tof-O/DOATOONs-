@@ -68,7 +68,6 @@
 
         .section {
             margin-bottom: 2rem;
-            scroll-margin-top: 80px; /* Reduced to match typical header height */
         }
 
         .section h2 {
@@ -88,7 +87,6 @@
             .intro-text { font-size: 1.26rem; }
             .menu ul { flex-direction: column; align-items: center; }
             .menu ul li { margin: 0.5rem 0; }
-            .section { scroll-margin-top: 60px; /* Reduced for smaller screens */ }
             .section h2 { font-size: 1.44rem; }
             .section p { font-size: 1.12rem; }
         }
@@ -96,7 +94,7 @@
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             .intro-text { font-size: 0.98rem; }
-            .section h2 { font-size 1.2rem; }
+            .section h2 { font-size: 1.2rem; }
             .section p { font-size: 0.84rem; }
         }
     </style>
@@ -164,6 +162,29 @@
                     ul.appendChild(li);
                 });
                 menu.appendChild(ul);
+
+                // Add event listeners to menu links to scroll to the end of the previous section
+                document.querySelectorAll('.menu a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        const allSections = Array.from(document.querySelectorAll('.section'));
+                        const targetIndex = allSections.indexOf(targetElement);
+                        
+                        // If not the first section, scroll to the end of the previous section
+                        if (targetIndex > 0) {
+                            const previousSection = allSections[targetIndex - 1];
+                            const previousBottom = previousSection.getBoundingClientRect().bottom + window.pageYOffset;
+                            window.scrollTo({ top: previousBottom, behavior: 'smooth' });
+                        } else {
+                            // For the first section, scroll to the top of the page
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    });
+                });
+
+                // Populate section content
                 document.getElementById('elementalFrameworksText').innerHTML = 
                     data.sections.elementalFrameworks.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
                     data.sections.elementalFrameworks.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
