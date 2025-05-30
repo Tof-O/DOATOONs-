@@ -13,28 +13,10 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            background: #ffffff;
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
-            position: relative;
-            background-image: url('/DOATOONs-/Logos/DOATOONs Epic.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(26, 42, 31, 0.6), rgba(10, 15, 13, 0.8));
-            z-index: -1;
-            pointer-events: none;
         }
 
         .page-content {
@@ -45,7 +27,7 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3.75rem; /* 2.5rem * 1.5 */
             text-align: center;
             margin-bottom: 2rem;
             color: #000000;
@@ -54,7 +36,7 @@
         .intro-text {
             text-align: center;
             margin-bottom: 2rem;
-            font-size: 1.1rem;
+            font-size: 2.2rem; /* 1.1rem * 2 */
         }
 
         .menu {
@@ -75,46 +57,48 @@
         }
 
         .menu ul li a {
-            color: #00ff00;
+            color: #00cc00; /* Darkened green from #00ff00 */
             text-decoration: underline;
             font-weight: normal;
             transition: color 0.3s;
         }
 
         .menu ul li a:hover {
-            color: #ffffff;
+            color: #0000ff;
         }
 
         .section {
             margin-bottom: 2rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #000000;
-            border-radius: 5px;
+            scroll-margin-top: 120px; /* Adjust for header height */
         }
 
         .section h2 {
-            font-size: 1.5rem;
+            font-size: 2.25rem; /* 1.5rem * 1.5 */
             margin-bottom: 0.5rem;
-            color: #00ff00;
+            color: #00cc00; /* Darkened green */
         }
 
         .section p {
-            font-size: 1rem;
+            font-size: 2rem; /* 1rem * 2 */
             color: #000000;
         }
 
         @media (max-width: 768px) {
             .page-content { padding: 100px 1rem 1rem; }
-            h1 { font-size: 2rem; }
+            h1 { font-size: 3rem; /* 2rem * 1.5 */ }
+            .intro-text { font-size: 1.8rem; /* Adjusted for readability */ }
             .menu ul { flex-direction: column; align-items: center; }
             .menu ul li { margin: 0.5rem 0; }
+            .section { scroll-margin-top: 100px; }
+            .section h2 { font-size: 1.8rem; /* 1.2rem * 1.5 */ }
+            .section p { font-size: 1.6rem; /* Adjusted for readability */ }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 1.5rem; }
-            .section h2 { font-size: 1.2rem; }
-            .section p { font-size: 0.9rem; }
+            h1 { font-size: 2.25rem; /* 1.5rem * 1.5 */ }
+            .intro-text { font-size: 1.4rem; /* Adjusted for readability */ }
+            .section h2 { font-size: 1.5rem; /* Adjusted for readability */ }
+            .section p { font-size: 1.2rem; /* Adjusted for readability */ }
         }
     </style>
 </head>
