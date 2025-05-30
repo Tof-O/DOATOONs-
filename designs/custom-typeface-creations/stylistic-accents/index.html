@@ -172,7 +172,7 @@
                         const allSections = Array.from(document.querySelectorAll('.section'));
                         const targetIndex = allSections.indexOf(targetElement);
                         
-                        // If not the first section, scroll to the end of the previous section
+                        // If not the first section, scroll to the bottom of the previous section
                         if (targetIndex > 0) {
                             const previousSection = allSections[targetIndex - 1];
                             const previousBottom = previousSection.getBoundingClientRect().bottom + window.pageYOffset;
