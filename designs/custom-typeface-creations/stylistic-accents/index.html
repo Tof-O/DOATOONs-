@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOATOONS - Stylistic Accents</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #1a2a1f, #0a0f0d);
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            background-image: url('/DOATOONs-/Logos/DOATOONs Epic.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 42, 31, 0.6), rgba(10, 15, 13, 0.8));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .page-content {
+            padding: 120px 2rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #000000;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #000000;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .menu {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .menu ul li {
+            margin: 0;
+        }
+
+        .menu ul li a {
+            color: #00ff00;
+            text-decoration: underline;
+            font-weight: normal;
+            transition: color 0.3s;
+        }
+
+        .menu ul li a:hover {
+            color: #ffffff;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00ff00;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #000000;
+        }
+
+        @media (max-width: 768px) {
+            .page-content { padding: 100px 1rem 1rem; }
+            h1 { font-size: 2rem; }
+            .menu ul { flex-direction: column; align-items: center; }
+            .menu ul li { margin: 0.5rem 0; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5rem; }
+            .section h2 { font-size: 1.2rem; }
+            .section p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="page-content">
+        <h1>Stylistic Accents</h1>
+        <div class="intro-text" id="introText"></div>
+
+        <div class="menu" id="menu"></div>
+
+        <div class="section" id="elementalFrameworks">
+            <h2>Elemental Frameworks</h2>
+            <div id="elementalFrameworksText"></div>
+        </div>
+
+        <div class="section" id="thematicPrinciples">
+            <h2>Thematic Principles</h2>
+            <div id="thematicPrinciplesText"></div>
+        </div>
+
+        <div class="section" id="borderDesign">
+            <h2>Border Design</h2>
+            <div id="borderDesignText"></div>
+        </div>
+
+        <div class="section" id="patternedBackground">
+            <h2>Patterned Background</h2>
+            <div id="patternedBackgroundText"></div>
+        </div>
+
+        <div class="section" id="letterFlowline">
+            <h2>Letter Flowline</h2>
+            <div id="letterFlowlineText"></div>
+        </div>
+
+        <div class="section" id="conclusion">
+            <h2>Elemental Frameworks (Theme)</h2>
+            <div id="conclusionText"></div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="/DOATOONs-/scripts.js"></script>
+    <script>
+        // Fetch and populate content from edit.json
+        fetch('./edit.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('introText').innerHTML = 
+                    `<p>${data.introText.paragraph1}</p>` +
+                    `<p>${data.introText.paragraph2}</p>` +
+                    `<p>${data.introText.paragraph3}</p>`;
+                const menu = document.getElementById('menu');
+                const ul = document.createElement('ul');
+                data.menu.forEach(item => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `#${item.id}`;
+                    a.textContent = item.title;
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+                menu.appendChild(ul);
+                document.getElementById('elementalFrameworksText').innerHTML = 
+                    data.sections.elementalFrameworks.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph3.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph4.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph5.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph6.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.elementalFrameworks.paragraph7.split('. ').map(p => `<p>${p}. </p>`).join('');
+                document.getElementById('thematicPrinciplesText').innerHTML = 
+                    data.sections.thematicPrinciples.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.thematicPrinciples.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('');
+                document.getElementById('borderDesignText').innerHTML = 
+                    data.sections.borderDesign.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.borderDesign.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.borderDesign.paragraph3.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.borderDesign.paragraph4.split('. ').map(p => `<p>${p}. </p>`).join('');
+                document.getElementById('patternedBackgroundText').innerHTML = 
+                    data.sections.patternedBackground.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.patternedBackground.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.patternedBackground.paragraph3.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.patternedBackground.paragraph4.split('. ').map(p => `<p>${p}. </p>`).join('');
+                document.getElementById('letterFlowlineText').innerHTML = 
+                    data.sections.letterFlowline.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.letterFlowline.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.letterFlowline.paragraph3.split('. ').map(p => `<p>${p}. </p>`).join('') +
+                    data.sections.letterFlowline.paragraph4.split('. ').map(p => `<p>${p}. </p>`).join('');
+                document.getElementById('conclusionText').innerHTML = 
+                    data.sections.conclusion.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('');
+            })
+            .catch(error => {
+                console.error('Error loading edit.json:', error);
+                document.getElementById('introText').textContent = "Error loading content.";
+            });
+    </script>
+</body>
+</html>
