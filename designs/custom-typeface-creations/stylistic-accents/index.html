@@ -60,6 +60,7 @@
             text-decoration: underline;
             font-weight: normal;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .menu ul li a:hover {
@@ -67,7 +68,19 @@
         }
 
         .section {
-            margin-bottom: 2rem;
+            display: none; /* Hide sections by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            padding: 20px;
+            border: 2px solid #00cc00;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            max-height: 80vh;
+            overflow-y: auto;
+            width: 80%;
         }
 
         .section h2 {
@@ -81,12 +94,35 @@
             color: #000000;
         }
 
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff0000;
+            border: none;
+            background: none;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
         @media (max-width: 768px) {
             .page-content { padding: 100px 0.5rem 1rem; }
             h1 { font-size: 2.4rem; }
             .intro-text { font-size: 1.26rem; }
             .menu ul { flex-direction: column; align-items: center; }
             .menu ul li { margin: 0.5rem 0; }
+            .section { width: 90%; padding: 15px; }
             .section h2 { font-size: 1.44rem; }
             .section p { font-size: 1.12rem; }
         }
@@ -107,39 +143,42 @@
         <div class="intro-text" id="introText"></div>
 
         <div class="menu" id="menu"></div>
-
-        <div class="section" id="elementalFrameworks">
-            <h2>Elemental Frameworks</h2>
-            <div id="elementalFrameworksText"></div>
-        </div>
-
-        <div class="section" id="thematicPrinciples">
-            <h2>Thematic Principles</h2>
-            <div id="thematicPrinciplesText"></div>
-        </div>
-
-        <div class="section" id="borderDesign">
-            <h2>Border Design</h2>
-            <div id="borderDesignText"></div>
-        </div>
-
-        <div class="section" id="patternedBackground">
-            <h2>Patterned Background</h2>
-            <div id="patternedBackgroundText"></div>
-        </div>
-
-        <div class="section" id="letterFlowline">
-            <h2>Letter Flowline</h2>
-            <div id="letterFlowlineText"></div>
-        </div>
-
-        <div class="section" id="conclusion">
-            <h2>Elemental Frameworks (Theme)</h2>
-            <div id="conclusionText"></div>
-        </div>
     </div>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Popup Divs for each section -->
+    <div id="overlay" class="overlay"></div>
+    <div id="elementalFrameworksPopup" class="section">
+        <button class="close-btn" onclick="closePopup('elementalFrameworksPopup')">X</button>
+        <h2>Elemental Frameworks</h2>
+        <div id="elementalFrameworksText"></div>
+    </div>
+    <div id="thematicPrinciplesPopup" class="section">
+        <button class="close-btn" onclick="closePopup('thematicPrinciplesPopup')">X</button>
+        <h2>Thematic Principles</h2>
+        <div id="thematicPrinciplesText"></div>
+    </div>
+    <div id="borderDesignPopup" class="section">
+        <button class="close-btn" onclick="closePopup('borderDesignPopup')">X</button>
+        <h2>Border Design</h2>
+        <div id="borderDesignText"></div>
+    </div>
+    <div id="patternedBackgroundPopup" class="section">
+        <button class="close-btn" onclick="closePopup('patternedBackgroundPopup')">X</button>
+        <h2>Patterned Background</h2>
+        <div id="patternedBackgroundText"></div>
+    </div>
+    <div id="letterFlowlinePopup" class="section">
+        <button class="close-btn" onclick="closePopup('letterFlowlinePopup')">X</button>
+        <h2>Letter Flowline</h2>
+        <div id="letterFlowlineText"></div>
+    </div>
+    <div id="conclusionPopup" class="section">
+        <button class="close-btn" onclick="closePopup('conclusionPopup')">X</button>
+        <h2>Elemental Frameworks (Theme)</h2>
+        <div id="conclusionText"></div>
+    </div>
 
     <script src="/DOATOONs-/scripts.js"></script>
     <script>
@@ -156,43 +195,14 @@
                 data.menu.forEach(item => {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    a.href = `#${item.id}`;
                     a.textContent = item.title;
+                    a.onclick = () => openPopup(item.id + 'Popup');
                     li.appendChild(a);
                     ul.appendChild(li);
                 });
                 menu.appendChild(ul);
 
-                // Calculate header height after DOM is loaded
-                const header = document.querySelector('#header-placeholder');
-                let headerHeight = 0;
-                if (header) {
-                    headerHeight = header.offsetHeight || 60; // Fallback to 60px if height is 0
-                }
-
-                // Add event listeners to menu links to scroll to the end of the previous section with header offset
-                document.querySelectorAll('.menu a').forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href').substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        const allSections = Array.from(document.querySelectorAll('.section'));
-                        const targetIndex = allSections.indexOf(targetElement);
-                        
-                        // If not the first section, scroll to the bottom of the previous section with offset
-                        if (targetIndex > 0) {
-                            const previousSection = allSections[targetIndex - 1];
-                            const previousBottom = previousSection.getBoundingClientRect().bottom + window.pageYOffset;
-                            const adjustedPosition = previousBottom - headerHeight;
-                            window.scrollTo({ top: adjustedPosition, behavior: 'smooth' });
-                        } else {
-                            // For the first section, scroll to the top of the page with offset
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                    });
-                });
-
-                // Populate section content
+                // Populate popup content
                 document.getElementById('elementalFrameworksText').innerHTML = 
                     data.sections.elementalFrameworks.paragraph1.split('. ').map(p => `<p>${p}. </p>`).join('') +
                     data.sections.elementalFrameworks.paragraph2.split('. ').map(p => `<p>${p}. </p>`).join('') +
@@ -226,6 +236,26 @@
                 console.error('Error loading edit.json:', error);
                 document.getElementById('introText').textContent = "Error loading content.";
             });
+
+        // Function to open a popup
+        function openPopup(popupId) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(popupId).style.display = 'block';
+        }
+
+        // Function to close a popup
+        function closePopup(popupId) {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        // Close popup when clicking the overlay
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.querySelectorAll('.section').forEach(popup => {
+                popup.style.display = 'none';
+            });
+            document.getElementById('overlay').style.display = 'none';
+        });
     </script>
 </body>
 </html>
