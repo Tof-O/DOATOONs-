@@ -50,9 +50,9 @@
         .menu ul {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            grid-template-rows: repeat(3, auto); /* 3 rows */
-            gap: 1.5rem; /* Equal spacing */
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, auto);
+            gap: 1.5rem;
             justify-content: center;
             padding: 0 1rem;
         }
@@ -62,7 +62,7 @@
         }
 
         .menu ul li button {
-            background: linear-gradient(45deg, #2e7d32, #66bb6a); /* Gradient from green to light green */
+            background: linear-gradient(45deg, #2e7d32, #66bb6a);
             color: #ffffff;
             border: none;
             padding: 12px 24px;
@@ -73,13 +73,13 @@
             width: 200px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .menu ul li button:hover {
-            background: linear-gradient(45deg, #1b5e20, #43a047); /* Darker gradient on hover */
-            transform: translateY(-2px); /* Lift effect */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+            background: linear-gradient(45deg, #1b5e20, #43a047);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         .section {
@@ -114,19 +114,21 @@
 
         .close-btn {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 50%;
+            right: 20px; /* Adjusted for right wall spacing */
+            transform: translateY(-50%); /* Centers vertically */
             font-size: 1.5rem;
             cursor: pointer;
-            color: #d32f2f;
+            color: #2e7d32; /* Green color */
             border: none;
             background: none;
             font-weight: bold;
             transition: color 0.3s;
+            padding: 5px 10px; /* Adds padding for better spacing */
         }
 
         .close-btn:hover {
-            color: #b71c1c;
+            color: #1b5e20; /* Darker green on hover */
         }
 
         .overlay {
@@ -144,7 +146,7 @@
             .page-content { padding: 100px 0.5rem 1rem; }
             h1 { font-size: 2.4rem; }
             .intro-text { font-size: 1.26rem; }
-            .menu ul { grid-template-columns: 1fr; } /* Stack vertically on smaller screens */
+            .menu ul { grid-template-columns: 1fr; }
             .menu ul li button { width: 180px; font-size: 1.1rem; }
             .section { width: 90%; padding: 20px; }
             .section h2 { font-size: 1.44rem; }
@@ -154,9 +156,10 @@
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             .intro-text { font-size: 0.98rem; }
-            .menu ul li button { width: 150px; font-size: 1rem; }
+            .menu ul li button { width: 150px; font-size 1rem; }
             .section h2 { font-size: 1.2rem; }
             .section p { font-size: 0.84rem; }
+            .close-btn { right: 15px; font-size: 1.3rem; } /* Adjust for smaller screens */
         }
     </style>
 </head>
