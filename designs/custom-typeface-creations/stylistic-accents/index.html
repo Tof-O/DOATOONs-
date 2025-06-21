@@ -114,9 +114,8 @@
 
         .close-btn {
             position: absolute;
-            top: 50%;
-            right: 20px; /* Adjusted for right wall spacing */
-            transform: translateY(-50%); /* Centers vertically */
+            top: 20px; /* Equal distance from top */
+            right: 20px; /* Equal distance from right */
             font-size: 1.5rem;
             cursor: pointer;
             color: #2e7d32; /* Green color */
@@ -151,15 +150,16 @@
             .section { width: 90%; padding: 20px; }
             .section h2 { font-size: 1.44rem; }
             .section p { font-size: 1.12rem; }
+            .close-btn { top: 15px; right: 15px; font-size: 1.3rem; } /* Adjusted for smaller screens */
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             .intro-text { font-size: 0.98rem; }
-            .menu ul li button { width: 150px; font-size 1rem; }
+            .menu ul li button { width: 150px; font-size: 1rem; }
             .section h2 { font-size: 1.2rem; }
             .section p { font-size: 0.84rem; }
-            .close-btn { right: 15px; font-size: 1.3rem; } /* Adjust for smaller screens */
+            .close-btn { top: 10px; right: 10px; font-size: 1.2rem; } /* Further adjustment for small screens */
         }
     </style>
 </head>
