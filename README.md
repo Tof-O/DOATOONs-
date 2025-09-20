@@ -1,4 +1,4 @@
-#DOATOONs
+DOATOONs
 A web application for managing user profiles and admin access for DOATOONs.
 Project Structure
 DOATOONs-/
